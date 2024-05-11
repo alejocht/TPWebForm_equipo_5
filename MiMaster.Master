@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MiMaster.master.cs" Inherits="TPWebForm_equipo_5.MiMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+    <title><%:Page.Title %> Pagina Maestra</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+            <header>
+                <nav>
+                <h1 id="Bienvenida">Bienvenido</h1>
+                <ul id="MenuNav">
+                <li><a class="Opcion" >Inicio</a></li>
+                <li><a class="Opcion" >Productos</a></li>
+                <li><a class="Opcion" >Carrito</a></li>
+                <li><a class="Opcion" >Contacto</a></li>
+            </ul>
+        </nav>
+            </header>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+        <div>
+            <footer>
+                
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
