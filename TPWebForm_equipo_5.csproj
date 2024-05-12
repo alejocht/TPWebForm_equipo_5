@@ -94,6 +94,15 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Dominio\Articulo.cs" />
+    <Compile Include="Clases\Dominio\Categoria.cs" />
+    <Compile Include="Clases\Dominio\Imagen.cs" />
+    <Compile Include="Clases\Dominio\Marca.cs" />
+    <Compile Include="Clases\LecturaDatos\AccesoDatos.cs" />
+    <Compile Include="Clases\LecturaDatos\LecturaArticulo.cs" />
+    <Compile Include="Clases\LecturaDatos\LecturaCategoria.cs" />
+    <Compile Include="Clases\LecturaDatos\LecturaImagen.cs" />
+    <Compile Include="Clases\LecturaDatos\LecturaMarca.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

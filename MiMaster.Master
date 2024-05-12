@@ -9,6 +9,7 @@
 
     <title><%:Page.Title %> Pagina Maestra</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
+    <a href="Clases/Dominio/Articulo.cs">Clases/Dominio/Articulo.cs</a>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
