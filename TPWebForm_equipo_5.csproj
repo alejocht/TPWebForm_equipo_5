@@ -93,6 +93,7 @@
     <Content Include="VentanaCarrito.aspx" />
     <Content Include="VentanaDetalle.aspx" />
     <Content Include="VentanaPrincipal.aspx" />
+    <Content Include="VentanaProductos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,13 @@
     </Compile>
     <Compile Include="VentanaPrincipal.aspx.designer.cs">
       <DependentUpon>VentanaPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaProductos.aspx.cs">
+      <DependentUpon>VentanaProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VentanaProductos.aspx.designer.cs">
+      <DependentUpon>VentanaProductos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

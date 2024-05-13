@@ -26,16 +26,16 @@
         <div>
             <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0" style="color: white; width: 20%;">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="VentanaInicio">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="VentanaPrincipal.aspx">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Productos</a>
+                    <a class="nav-link active" aria-current="page" href="VentanaProductos.aspx">Productos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="VentanaCarrito"><img style="width:24px; height:24px" src="https://cdn-icons-png.flaticon.com/512/998/998653.png" alt="carrito"></img>    </a>
+                    <a class="nav-link active" aria-current="page" href="VentanaCarrito.aspx"> <img style="width:24px; height:24px" src="https://cdn-icons-png.flaticon.com/512/998/998653.png" alt="carrito">    </a>
                 </li>
             </ul>
          </div>
