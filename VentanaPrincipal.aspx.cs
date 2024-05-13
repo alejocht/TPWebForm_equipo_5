@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TPWebForm_equipo_5
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class VentanaPrincipal : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

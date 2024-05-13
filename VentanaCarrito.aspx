@@ -8,12 +8,12 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-9">
                     <h4>Lista de productos</h4>
                     <div class="container">
                         <div class="row">
-                            <div class="col-3">
-                                <img src="imagenes/imagenxxx.jpg" class="img-fluid" alt="Responsive image">
+                            <div class="col-4">
+                                <img src="https://via.placeholder.com/200" class="img-fluid" alt="Responsive image">
                             </div>
                             <div class="col">
                                 <div class="container">
@@ -29,43 +29,42 @@
                                 </div>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col">
+                                        <div class="col-2">
                                             <p>Cantidad</p>
                                         </div>
-                                        <div class="col-6">
-                                            <input type="number" value="1" min="1" max="100">
+                                        <div class="col">
+                                            <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />
                                         </div>
-                                        <div class="col-3 text-end">
-                                            <button type="button" class="btn btn-danger">Eliminar</button>                                           
+                                        <div class="col-6 text-end">
+                                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="container text-end">
                                     <div class="row">
                                         <div class="col">
-                                            <button type="button" class="btn btn-primary">Continuar comprando</button>
+                                            <asp:Button ID="btnContinuarComprando" runat="server" Text="Continuar comprando" CssClass="btn btn-primary" OnClick="btnContinuarComprando_Click"/>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>      
                         </div>
                     </div>
                 </div>
                 <div class="col">
                      <h4>Resumen del pedido</h4>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <p>Subtotal: xxxx</p>
-                                    <p>Envio: xxxx</p>
-                                    <h4>Total: xxxx</h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-success">Comprar</button>
-                            </div>
-                        </div>
+                     <div class="container">
+                         <div class="row">
+                             <div class="col">
+                                 <p>Subtotal: xxxx</p>
+                                 <p>Envio: xxxx</p>
+                                 <h4>Total: xxxx</h4>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <asp:Button ID="btnComprar" runat="server" Text="Comprar" CssClass="btn btn-success" OnClick="btnFinalizarCompra_Click" />
+                         </div>
+                     </div>
                 </div>
             </div>       
         </div>
