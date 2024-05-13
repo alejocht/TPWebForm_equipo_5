@@ -28,11 +28,11 @@
                 <div class="container text-end">                
                     <div class="row">
                         <div class="col-3">
-                        <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />                        </div>
-                        <div class="col">
-                            
+                        <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />
+                        </div>
+                        <div class="col">       
                             <asp:Button ID="btnComprarAhora" runat="server" Text="Comprar ahora" CssClass="btn btn-primary" OnClick="btnComprarAhora_Click" />
-                            <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" OnClick="btnAgregarCarrito_Click" />
+                            <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" />
                         </div>                          
                     </div>
                 </div>          
@@ -61,7 +61,7 @@
                         <h5>Consulta</h5>
                         <asp:TextBox ID="txtConsulta" TextMode="MultiLine" runat="server" CssClass="form-control" rows="3" />
                         <div class="container text-end">
-                            <asp:Button ID="btnEnviarConsulta" runat="server" Text="Enviar consulta" CssClass="btn btn-primary" OnClick="btnEnviarConsulta_Click" />
+                            <asp:Button ID="btnEnviarConsulta" runat="server" Text="Enviar consulta" CssClass="btn btn-primary" />
                         </div>
                     </div>
                 </div>

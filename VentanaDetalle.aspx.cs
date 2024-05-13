@@ -13,17 +13,10 @@ namespace TPWebForm_equipo_5
         {
 
         }
+
         protected void btnComprarAhora_Click(object sender, EventArgs e)
         {
-            Response.Redirect("VentanaCarrito.aspx"); //Posible ventana compra?
-        }
-        protected void btnAgregarCarrito_Click(object sender, EventArgs e)
-        {
-            //Podria solo dejar un msj flotante?
-        }
-        protected void btnEnviarConsulta_Click(object sender, EventArgs e)
-        {
-            //Tiene que se un supuesto envio de formulario
+            Response.Redirect("VentanaCarrito.aspx");
         }
     }
 }
