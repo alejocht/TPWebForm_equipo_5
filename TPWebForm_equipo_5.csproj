@@ -92,8 +92,8 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="VentanaCarrito.aspx" />
     <Content Include="VentanaDetalle.aspx" />
+    <Content Include="VentanaPrincipal.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Dominio\Articulo.cs" />
@@ -130,12 +130,12 @@
     <Compile Include="VentanaDetalle.aspx.designer.cs">
       <DependentUpon>VentanaDetalle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="VentanaPrincipal.aspx.cs">
+      <DependentUpon>VentanaPrincipal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="VentanaPrincipal.aspx.designer.cs">
+      <DependentUpon>VentanaPrincipal.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

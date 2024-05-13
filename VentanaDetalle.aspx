@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MiMaster.Master" AutoEventWireup="true" CodeBehind="VentanaDetalle.aspx.cs" Inherits="TPWebForm_equipo_5.VentanaDetalle" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
@@ -10,9 +11,9 @@
          <div class="row">
              <div class="col-md-5">
                  <br/>
-                <img src="https://via.placeholder.com/300" alt="Imagen del producto" class="img-fluid">
+                <img src="https://via.placeholder.com/400" alt="Imagen del producto" class="img-fluid">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="container">
                     <h1>Nombre del producto</h1>
                     <h2>Precio xxxx</h2>
@@ -22,11 +23,19 @@
                     <p>Categoría del producto</p>
                     <p>Marca del producto</p>
                     <p>Stock del producto</p>
+                    <p>Cantidad</p>
                 </div>
-                <div class="container text-end">
-                    <button type="button" class="btn btn-primary">Comprar ahora</button>
-                    <button type="button" class="btn btn-primary">Agregar al carrito</button>
-                </div>              
+                <div class="container text-end">                
+                    <div class="row">
+                        <div class="col-3">
+                        <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />                        </div>
+                        <div class="col">
+                            
+                            <asp:Button ID="btnComprarAhora" runat="server" Text="Comprar ahora" CssClass="btn btn-primary" OnClick="btnComprarAhora_Click" />
+                            <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" OnClick="btnAgregarCarrito_Click" />
+                        </div>                          
+                    </div>
+                </div>          
             </div>
          </div>
     </div>
@@ -40,19 +49,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre">
+                        <h5>Formulario de contacto</h5>
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Nombre" />
                     </div>
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                        <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" CssClass="form-control" placeholder="Email" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Consulta</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <button type="button" class="btn btn-primary">Enviar consulta</button>
+                        <h5>Consulta</h5>
+                        <asp:TextBox ID="txtConsulta" TextMode="MultiLine" runat="server" CssClass="form-control" rows="3" />
+                        <div class="container text-end">
+                            <asp:Button ID="btnEnviarConsulta" runat="server" Text="Enviar consulta" CssClass="btn btn-primary" OnClick="btnEnviarConsulta_Click" />
+                        </div>
                     </div>
                 </div>
             </div>
