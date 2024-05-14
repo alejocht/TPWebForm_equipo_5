@@ -16,21 +16,21 @@
             <div class="col-md-7">
                 <div class="container">
                     <div>
-                        <asp:Label ID="lblNombreArticulo" runat="server" Text="Articulo SuperMax" />
+                        <asp:Label ID="lblNombreArticulo" runat="server" Text="Articulo Detalle SuperMax" CssClass="h1" />
                     </div>
                     <div>
-                        <asp:Label ID="lblPrecio" runat="server" Text="PrecioDetalle" />
+                        <asp:Label ID="lblPrecio" runat="server" Text="Precio Detalle" CssClass="h3" />
                     </div>                    
                 </div>             
                 <div class="container">
                     <div>
-                        <asp:Label ID="lblDescripcion" runat="server" Text="DescripciónDetalle" />
+                        <asp:Label ID="lblDescripcion" runat="server" Text="Descripción Detalle" CssClass="p"/>
                     </div>
                     <div>
-                        <asp:Label ID="lblCategoria" runat="server" Text="Categoría" />
+                        <asp:Label ID="lblCategoria" runat="server" Text="Categoría Detalle" CssClass="h5" />
                     </div>
                     <div>
-                        <asp:Label ID="lblMarca" runat="server" Text="Marca" />
+                        <asp:Label ID="lblMarca" runat="server" Text="Marca Detalle" CssClass="h5"/>
                     </div>
                     <div>
                         <br />
