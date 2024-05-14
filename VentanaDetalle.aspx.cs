@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,19 +12,43 @@ namespace TPWebForm_equipo_5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
+
         protected void btnComprarAhora_Click(object sender, EventArgs e)
         {
-            Response.Redirect("VentanaCarrito.aspx"); //Posible ventana compra?
+            string nombreArticulo = lblNombreArticulo.Text;
+            string precio = lblPrecio.Text;
+            string descripcion = lblDescripcion.Text;
+            string cantidad = tbxCantidad.Text;
+
+            Session.Add("nombreArticuloDetalle", nombreArticulo);
+            Session.Add("precioDetalle", precio);
+            Session.Add("descripcionDetalle", descripcion);
+            Session.Add("cantidadDetalle", cantidad);
+
+            Response.Redirect("VentanaCarrito.aspx", false);
         }
+
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            //Podria solo dejar un msj flotante?
+
         }
+
         protected void btnEnviarConsulta_Click(object sender, EventArgs e)
         {
-            //Tiene que se un supuesto envio de formulario
+            string nombre = txtNombre.Text;
+            string email = txtEmail.Text;
+            string consulta = txtConsulta.Text;
+
+            if (nombre != "" && email != "" && consulta != "")
+            {
+                //lblMensaje.Text = "Consulta enviada correctamente";
+            }
+            else
+            {
+                //lblMensaje.Text = "Por favor, complete todos los campos";
+            }
         }
     }
 }
