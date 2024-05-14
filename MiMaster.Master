@@ -18,10 +18,8 @@
     <div class="container-fluid">
         <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="#"><h3 style="color: white; width: 20%;">CarritoWeb</h3></a>
         <div class="d-inline-flex p-2 w-50 justify-content-center" id="navbarSupportedContent">
-            <form role="search">
                     <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control me-2"></asp:TextBox>
                     <asp:Button ID="btnBusqueda" runat="server" Text="Buscar" CssClass="btn btn-outline-light" />
-            </form>
         </div>
         <div>
             <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0" style="color: white; width: 20%;">
