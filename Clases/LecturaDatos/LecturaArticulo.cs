@@ -42,7 +42,6 @@ namespace LecturaDatos
                         aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     if (!Convert.IsDBNull(datos.Lector["Categoria"]))
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
-
                     if (!Convert.IsDBNull(datos.Lector["ImagenUrl"]))
                         aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
 

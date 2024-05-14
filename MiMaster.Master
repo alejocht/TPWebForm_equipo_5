@@ -4,7 +4,7 @@
 
 <html lang="es">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title><%:Page.Title %> Pagina Maestra</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -13,104 +13,94 @@
 
 <body>
     <form id="form1" runat="server">
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #274C77">
-                <div class="container-fluid">
-                    <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="#">
-                        <h3 style="color: white; width: 20%;">CarritoWeb</h3>
-                    </a>
-                    <div class="d-inline-flex p-2 w-50 justify-content-center" id="navbarSupportedContent">                       
-                            <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control me-2"></asp:TextBox>
-                            <asp:Button ID="btnBusqueda" runat="server" Text="Buscar" CssClass="btn btn-outline-light" />
-                    </div>
-                    <div>
-                        <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0" style="color: white; width: 20%;">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="VentanaInicio">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Productos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Contacto</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="VentanaCarrito">
-                                    <img style="width: 24px; height: 24px" src="https://cdn-icons-png.flaticon.com/512/998/998653.png" alt="carrito"></img>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#274C77">
+    <div class="container-fluid">
+        <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="#"><h3 style="color: white; width: 20%;">CarritoWeb</h3></a>
+        <div class="d-inline-flex p-2 w-50 justify-content-center" id="navbarSupportedContent">
+            <form role="search">
+                    <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control me-2"></asp:TextBox>
+                    <asp:Button ID="btnBusqueda" runat="server" Text="Buscar" CssClass="btn btn-outline-light" />
+            </form>
+        </div>
+        <div>
+            <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0" style="color: white; width: 20%;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="VentanaPrincipal.aspx">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="VentanaProductos.aspx">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="VentanaCarrito.aspx"> <img style="width:24px; height:24px" src="https://cdn-icons-png.flaticon.com/512/998/998653.png" alt="carrito">    </a>
+                </li>
+            </ul>
+         </div>
+    </div>
+</nav>
+ </header>
 
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
 
-        <footer style="background-color: #274C77">
-            <div class="container-fluid text-center">
-                <div class="row p-5 text-white">
-                    <div class="col-xs-12 col-md-6 col-lg-3">
-                        <p class="h6">Medios de pago</p>
-                        <div>
-
-                            <img class="img-thumbnail" src="https://www.lensexpress.com.ar/wp-content/uploads/2023/10/formas-pago.png" alt="Medios de pago" />
+            <footer style="background-color:#274C77">
+                <div class="container-fluid text-center">
+                    <div class="row p-5 text-white">
+                        <div class="col-xs-12 col-md-6 col-lg-3">
+                            <p class="h6">Medios de pago</p>
+                            <div>
+                                
+                                            <img class="img-thumbnail" src="https://www.lensexpress.com.ar/wp-content/uploads/2023/10/formas-pago.png" alt="Medios de pago" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-lg-3">
+                            <p class="h6">Nuestras sucursales</p>
+                            <ul>
+                                <li>Av cazon 123, Tigre, Buenos Aires</li>
+                                <li>Av Torcuato 321, Tigre, Buenos Aires</li>
+                                <li>Av Mitre 678, CABA, Buenos Aires</li>
+                                <li>Av Hernandez 678, Lomas de Zamora, Buenos Aires</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-lg-3">
+                            <p class="h6">Nuestras Redes</p>
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#"><img style="width:32px; height:32px" src="https://cdn-icons-png.flaticon.com/256/124/124010.png" alt="Facebook" /></a>
+                                </li>
+                                 <li class="list-inline-item">
+                                     <a href="#"><img style="width:32px; height:32px" src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png" alt="Instagram" /></a>                                    
+                                 </li>
+                                 <li class="list-inline-item">
+                                     <a href="#"><img style="width:32px; height:32px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png" alt="Twitter" /></a>                                   
+                                </li>
+                            </ul>
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#"><img style="width:32px; height:32px" src="https://fontmeme.com/images/tiktok-logo-font.png" alt="TikTok" /></a>
+                                </li>
+                                 <li class="list-inline-item">
+                                     <a href="#"><img style="width:32px; height:32px" src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="Youtube" /></a>
+                                 </li>
+                                 <li class="list-inline-item">
+                                     <a href="#"><img style="width:32px; height:32px" src="https://cdn-icons-png.flaticon.com/256/174/174857.png" alt="Linkedin" /></a>                              
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-lg-3">
+                            <p class="h6">Atención al cliente</p>
+                            <p>Si hiciste una compra en el sitio <br/>
+                               estamos a tu disposicion.<br/>
+                                Puede comunicarse al <a class="text-decoration-underline" href="#">1123234545</a>
+                            </p>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-6 col-lg-3">
-                        <p class="h6">Nuestras sucursales</p>
-                        <ul>
-                            <li>Av cazon 123, Tigre, Buenos Aires</li>
-                            <li>Av Torcuato 321, Tigre, Buenos Aires</li>
-                            <li>Av Mitre 678, CABA, Buenos Aires</li>
-                            <li>Av Hernandez 678, Lomas de Zamora, Buenos Aires</li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-12 col-md-6 col-lg-3">
-                        <p class="h6">Nuestras Redes</p>
-                        <ul class="list-unstyled list-inline">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://cdn-icons-png.flaticon.com/256/124/124010.png" alt="Facebook" /></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png" alt="Instagram" /></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png" alt="Twitter" /></a>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled list-inline">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://fontmeme.com/images/tiktok-logo-font.png" alt="TikTok" /></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="Youtube" /></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://cdn-icons-png.flaticon.com/256/174/174857.png" alt="Linkedin" /></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-12 col-md-6 col-lg-3">
-                        <p class="h6">Atención al cliente</p>
-                        <p>
-                            Si hiciste una compra en el sitio
-                            <br />
-                            estamos a tu disposicion.<br />
-                            Puede comunicarse al <a class="text-decoration-underline" href="#">1123234545</a>
-                        </p>
-                    </div>
                 </div>
-            </div>
 
-        </footer>
+            </footer>
     </form>
 </body>
 </html>
