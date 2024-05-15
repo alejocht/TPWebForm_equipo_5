@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title><%:Page.Title %> Pagina Maestra</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -16,12 +18,10 @@
   <header>
       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#274C77">
     <div class="container-fluid">
-        <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="#"><h3 style="color: white; width: 20%;">CarritoWeb</h3></a>
+        <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="VentanaPrincipal.aspx"><h3 style="color: white; width: 20%;">CarritoWeb</h3></a>
         <div class="d-inline-flex p-2 w-50 justify-content-center" id="navbarSupportedContent">
-            <form role="search">
                     <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control me-2"></asp:TextBox>
-                    <asp:Button ID="btnBusqueda" runat="server" Text="Buscar" CssClass="btn btn-outline-light" />
-            </form>
+                    <asp:Button ID="btnBusqueda" runat="server" Text="Buscar" CssClass="btn btn-outline-light" OnClick="btnBusqueda_Click" />
         </div>
         <div>
             <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0" style="color: white; width: 20%;">
@@ -32,7 +32,7 @@
                     <a class="nav-link active" aria-current="page" href="VentanaProductos.aspx">Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+                    <a class="nav-link active" aria-current="page" href="#about">Contacto</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="VentanaCarrito.aspx"> <img style="width:24px; height:24px" src="https://cdn-icons-png.flaticon.com/512/998/998653.png" alt="carrito">    </a>
@@ -46,7 +46,7 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
 
-            <footer style="background-color:#274C77">
+            <footer id="about" style="background-color:#274C77; position:relative; bottom:0;">
                 <div class="container-fluid text-center">
                     <div class="row p-5 text-white">
                         <div class="col-xs-12 col-md-6 col-lg-3">
