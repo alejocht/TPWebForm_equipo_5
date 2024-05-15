@@ -14,9 +14,7 @@
     <div class="container d-flex justify-content-end" style="margin-right: 10px">
         <asp:DropDownList ID="DdlOrden" runat="server"
             aria-label="Default select example">
-            <asp:ListItem Text="Orden alfabetico" Selected="True" />
-            <asp:ListItem Text="Precio ↑" Value="1" />
-            <asp:ListItem Text="Precio ↓" Value="2" />
+            
         </asp:DropDownList>
     </div>
 
