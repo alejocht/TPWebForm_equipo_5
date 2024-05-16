@@ -12,12 +12,14 @@ namespace TPWebForm_equipo_5
     public partial class VentanaProductos : System.Web.UI.Page
     {
         public List<Articulo> listaLecturaArticulos;
+        string busqueda = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             
             cargarddl();
             cargardatos();
             ordenarcards();
+
         }
         public void cargardatos()
         {
