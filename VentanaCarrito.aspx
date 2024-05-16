@@ -7,65 +7,70 @@
         <h2>Carrito de Compras</h2>
     </div>
 
-    <% if (nombreCarrito != "")
+    <% if (Session["Seleccionados"] != null)
         { %>
     <div class="container">
         <div class="row">
-            <div class="col-9">
-                <h4>Lista de productos</h4>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="https://via.placeholder.com/200" ID="imgCarrito" class="img-fluid" alt="Responsive image">
-                        </div>
-                        <div class="col">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <div>
-                                            <asp:Label ID="lblArticulo" runat="server" Text="Articulo" CssClass="h5" />
-                                        </div>
-                                        <div>
-                                            <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion" CssClass="p" />
-                                        </div>
-                                    </div>
-                                    <div class="col-3 text-end">
-                                        <asp:Label ID="lblPrecio" runat="server" Text="Precio" CssClass="p" />
-                                    </div>
+            <asp:Repeater runat="server" ID="repCarrito">
+                <ItemTemplate>
+                    <div class="col-9">
+                        <h4>Lista de productos</h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="https://via.placeholder.com/200" id="imgCarrito" class="img-fluid" alt="Responsive image">
                                 </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <p>Cantidad</p>
+                                <div class="col">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div>
+                                                    <asp:Label ID="lblArticulo" runat="server" Text="Articulo" CssClass="h5" />
+                                                </div>
+                                                <div>
+                                                    <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion" CssClass="p" />
+                                                </div>
+                                            </div>
+                                            <div class="col-3 text-end">
+                                                <asp:Label ID="lblPrecio" runat="server" Text="Precio" CssClass="p" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <p>Cantidad</p>
+                                            </div>
+                                            <div class="col">
+                                                <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />
+                                            </div>
+                                            <div class="col-6 text-end">
+                                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-6 text-end">
-                                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container text-end">
-                                <div class="row">
-                                    <div class="col">
-                                        <asp:Button ID="btnContinuarComprando" runat="server" Text="Continuar comprando" CssClass="btn btn-primary" OnClick="btnContinuarComprando_Click" />
+                                    <div class="container text-end">
+                                        <div class="row">
+                                            <div class="col">
+                                                <asp:Button ID="btnContinuarComprando" runat="server" Text="Continuar comprando" CssClass="btn btn-primary" OnClick="btnContinuarComprando_Click" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </ItemTemplate>
+            </asp:Repeater>
+
             <div class="col">
                 <h4>Resumen del pedido</h4>
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <p>Subtotal: xxxx</p>
-                            <p>Envio: xxxx</p>
-                            <h4>Total: xxxx</h4>
+                            <asp:Label ID="lblSubTotal" runat="server" Text="Subtotal: xxxx" CssClass="p" />
+                            <asp:Label ID="lblEnvio" runat="server" Text="Envio: xxxx" CssClass="p" />
+                            <asp:Label ID="lblTotalCompra" runat="server" Text="Total: $xxxx" CssClass="h4" />
                         </div>
                     </div>
                     <div class="row">
