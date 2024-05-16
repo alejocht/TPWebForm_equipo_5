@@ -15,21 +15,41 @@ namespace TPWebForm_equipo_5
         string busqueda = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            cargarddl();
             cargardatos();
-            busqueda = Request.QueryString["busqueda"];
-            if(busqueda != null ) filtrarArticulo(busqueda);
+            ordenarcards();
+
         }
         public void cargardatos()
         {
             LecturaArticulo lecturaArticulo = new LecturaArticulo();
             listaLecturaArticulos = lecturaArticulo.listar();
         }
-        private void filtrarArticulo(string filtro)
+        public void ordenarpag(int value)
         {
+            if (value == 0) { }
+        }
+
+        public void cargarddl()
+        {
+            DdlOrden.Items.Add("Precio ↑");
+            DdlOrden.Items.Add("Orden alfabetico");
+            DdlOrden.Items.Add("Precio ↓");
+        }
+
+        public void ordenarcards()
+        {
+            List<Articulo> listaFiltrada = new List<Articulo>();
+            if(DdlOrden.SelectedValue == "Precio ↑") {
+               listaFiltrada = listaLecturaArticulos.OrderBy(x => x.Precio).ToList();
+            } //else //if(DdlOrden.SelectedValue == "Precio ↓")
+            listaLecturaArticulos = new List<Articulo>(listaFiltrada);
             
-            List<Articulo> listaFiltrada;
-            listaFiltrada = listaLecturaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()));
-            listaLecturaArticulos = listaFiltrada;
+        }
+
+        public void modificarlista() {
+            
         }
     }
 }

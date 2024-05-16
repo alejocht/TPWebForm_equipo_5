@@ -15,22 +15,36 @@
             </div>
             <div class="col-md-7">
                 <div class="container">
-                    <h1>Nombre del producto</h1>
-                    <h2>Precio xxxx</h2>
+                    <div>
+                        <asp:Label ID="lblNombreArticulo" runat="server" Text="Articulo Detalle SuperMax" CssClass="h1" />
+                    </div>
+                    <div>
+                        <asp:Label ID="lblPrecio" runat="server" Text="Precio Detalle" CssClass="h3" />
+                    </div>                    
                 </div>             
                 <div class="container">
-                    <p>Descripción del producto sin limites, aca se tiene que colocar un textBox</p>
-                    <p>Categoría del producto</p>
-                    <p>Marca del producto</p>
-                    <p>Stock del producto</p>
-                    <p>Cantidad</p>
+                    <div>
+                        <asp:Label ID="lblDescripcion" runat="server" Text="Descripción Detalle" CssClass="p"/>
+                    </div>
+                    <div>
+                        <asp:Label ID="lblCategoria" runat="server" Text="Categoría Detalle" CssClass="h5" />
+                    </div>
+                    <div>
+                        <asp:Label ID="lblMarca" runat="server" Text="Marca Detalle" CssClass="h5"/>
+                    </div>
+                    <div>
+                        <br />
+                    </div>
+                    <div>
+                        <p>Unidades a comprar:</p>
+                    </div>            
                 </div>
                 <div class="container text-end">                
                     <div class="row">
-                        <div class="col-3">
-                        <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />                        </div>
-                        <div class="col">
-                            
+                        <div class="col-4">
+                        <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />
+                        </div>
+                        <div class="col">       
                             <asp:Button ID="btnComprarAhora" runat="server" Text="Comprar ahora" CssClass="btn btn-primary" OnClick="btnComprarAhora_Click" />
                             <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" OnClick="btnAgregarCarrito_Click" />
                         </div>                          
@@ -59,7 +73,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <h5>Consulta</h5>
-                        <asp:TextBox ID="txtConsulta" TextMode="MultiLine" runat="server" CssClass="form-control" rows="3" />
+                        <asp:TextBox ID="txtConsulta" TextMode="MultiLine" runat="server" CssClass="form-control" placeholder="Escriba su consulta aquí" rows="3" />
                         <div class="container text-end">
                             <asp:Button ID="btnEnviarConsulta" runat="server" Text="Enviar consulta" CssClass="btn btn-primary" OnClick="btnEnviarConsulta_Click" />
                         </div>

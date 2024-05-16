@@ -21,6 +21,7 @@
         <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="VentanaPrincipal.aspx"><h3 style="color: white; width: 20%;">CarritoWeb</h3></a>
         <div class="d-inline-flex p-2 w-50 justify-content-center" id="navbarSupportedContent">
                     <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control me-2"></asp:TextBox>
+
                     <asp:Button ID="btnBusqueda" runat="server" Text="Buscar" CssClass="btn btn-outline-light" OnClick="btnBusqueda_Click" />
         </div>
         <div>
