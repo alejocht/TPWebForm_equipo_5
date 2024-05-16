@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -10,43 +11,52 @@ namespace TPWebForm_equipo_5
 {
     public partial class VentanaCarrito : System.Web.UI.Page
     {
-        public string nombreCarrito { get; set; }
-        public string precioCarrito { get; set; }
-        public string descripcionCarrito { get; set; }
-        public string cantidadCarrito { get; set; }
-
-        public VentanaCarrito()
-        {
-            nombreCarrito = "";
-            precioCarrito = "";
-            descripcionCarrito = "";
-            cantidadCarrito = "";
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["nombreArticuloDetalle"].ToString() != null)
+            if (Session["Seleccionados"] != null)
             {
-                nombreCarrito = Session["nombreArticuloDetalle"].ToString();
-                precioCarrito = Session["precioDetalle"].ToString();
-                descripcionCarrito = Session["descripcionDetalle"].ToString();
-                cantidadCarrito = Session["cantidadDetalle"].ToString();
+                List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
 
-                lblArticulo.Text = nombreCarrito;
-                lblPrecio.Text = precioCarrito;
-                lblDescripcion.Text = descripcionCarrito;
-                tbxCantidad.Text = cantidadCarrito;
-            }
-            else
-            {
-                nombreCarrito = ""; //Cambiar luego con la base de datos
+                if (!IsPostBack)
+                {
+                    repCarrito.DataSource = seleccionados;
+                    repCarrito.DataBind();
+
+                    decimal SubtotalCarrito = CalcularCarritoTotal(seleccionados);
+                    lblTotalCompra.Text = "Total del Carrito: $" + SubtotalCarrito.ToString("0.00");
+                    lblEnvio.Text = "Costo de envío: $" + 5000.ToString("0.00"); ;
+                    lblTotalCompra.Text = "Total: $" + (SubtotalCarrito + 5000).ToString("0.00");
+                }
             }
         }
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            nombreCarrito = "";
-            precioCarrito = "";
-            descripcionCarrito = "";
-            cantidadCarrito = "";
+            Button btn = (Button)sender;
+            int IDArticulo = Convert.ToInt32(btn.CommandArgument);
+
+            List<Articulo> seleccionados;
+            if (Session["Seleccionados"] != null)
+            {
+                seleccionados = (List<Articulo>)Session["Seleccionados"];
+            }
+            else
+            {
+                seleccionados = new List<Articulo>();
+            }
+
+            List<Articulo> nuevaLista = new List<Articulo>();
+            bool eliminado = false;
+
+            foreach (var articulo in seleccionados)
+            {
+                if (!eliminado && articulo.Id == IDArticulo) { eliminado = true; }
+                else { nuevaLista.Add(articulo); }
+            }
+
+            Session["Seleccionados"] = nuevaLista;
+            Response.Redirect(Request.RawUrl);
+            repCarrito.DataSource = nuevaLista;
+            repCarrito.DataBind();
         }
         protected void btnContinuarComprando_Click(object sender, EventArgs e)
         {
@@ -55,6 +65,17 @@ namespace TPWebForm_equipo_5
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
             Response.Redirect("VentanaCompra.aspx");
+        }
+        private decimal CalcularCarritoTotal(List<Articulo> articulos)
+        {
+            decimal total = 0;
+
+            foreach (var articulo in articulos)
+            {
+                total += (decimal)articulo.Precio;
+            }
+
+            return total;
         }
     }
 }
