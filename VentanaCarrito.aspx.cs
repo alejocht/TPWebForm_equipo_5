@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -10,43 +11,52 @@ namespace TPWebForm_equipo_5
 {
     public partial class VentanaCarrito : System.Web.UI.Page
     {
-        public string nombreCarrito { get; set; }
-        public string precioCarrito { get; set; }
-        public string descripcionCarrito { get; set; }
-        public string cantidadCarrito { get; set; }
-
-        public VentanaCarrito()
-        {
-            nombreCarrito = "";
-            precioCarrito = "";
-            descripcionCarrito = "";
-            cantidadCarrito = "";
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["nombreArticuloDetalle"].ToString() != null)
+            if (Session["ArticulosEnCarrito"] != null)
             {
-                nombreCarrito = Session["nombreArticuloDetalle"].ToString();
-                precioCarrito = Session["precioDetalle"].ToString();
-                descripcionCarrito = Session["descripcionDetalle"].ToString();
-                cantidadCarrito = Session["cantidadDetalle"].ToString();
+                List<Articulo> ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
 
-                lblArticulo.Text = nombreCarrito;
-                lblPrecio.Text = precioCarrito;
-                lblDescripcion.Text = descripcionCarrito;
-                tbxCantidad.Text = cantidadCarrito;
-            }
-            else
-            {
-                nombreCarrito = ""; //Cambiar luego con la base de datos
+                if (!IsPostBack)
+                {
+                    repCarrito.DataSource = ArticulosEnCarrito;
+                    repCarrito.DataBind();
+
+                    decimal SubtotalCarrito = CalcularCarritoTotal(ArticulosEnCarrito);
+                    lblSubTotal.Text = "Subtotal: $" + SubtotalCarrito.ToString("0.00");
+                    lblEnvio.Text = "Envío: $" + 5000.ToString("0.00"); ;
+                    lblTotalCompra.Text = "Total: $" + (SubtotalCarrito + 5000).ToString("0.00");
+                }
             }
         }
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            nombreCarrito = "";
-            precioCarrito = "";
-            descripcionCarrito = "";
-            cantidadCarrito = "";
+            Button btn = (Button)sender;
+            int IDArticulo = Convert.ToInt32(btn.CommandArgument);
+
+            List<Articulo> ArticulosEnCarrito;
+            if (Session["ArticulosEnCarrito"] != null)
+            {
+                ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
+            }
+            else
+            {
+                ArticulosEnCarrito = new List<Articulo>();
+            }
+
+            List<Articulo> nuevaLista = new List<Articulo>();
+            bool eliminado = false;
+
+            foreach (var articulo in ArticulosEnCarrito)
+            {
+                if (!eliminado && articulo.Id == IDArticulo) { eliminado = true; }
+                else { nuevaLista.Add(articulo); }
+            }
+
+            Session["ArticulosEnCarrito"] = nuevaLista;
+            Response.Redirect(Request.RawUrl);
+            repCarrito.DataSource = nuevaLista;
+            repCarrito.DataBind();
         }
         protected void btnContinuarComprando_Click(object sender, EventArgs e)
         {
@@ -55,6 +65,22 @@ namespace TPWebForm_equipo_5
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
             Response.Redirect("VentanaCompra.aspx");
+        }
+        private decimal CalcularCarritoTotal(List<Articulo> articulos)
+        {
+            decimal total = 0;
+
+            foreach (var articulo in articulos)
+            {
+                total += (decimal)articulo.Precio;
+            }
+
+            return total;
+        }
+        protected void tbxCantidad_TextChanged(object sender, EventArgs e)
+        {
+            //Resolver (puede que haya que agregar una propiedad nueva a articulo, con un constructor por defecto de 1)
+            //Luego hacer las cuentas correspondientes en el método CalcularCarritoTotal...
         }
     }
 }
