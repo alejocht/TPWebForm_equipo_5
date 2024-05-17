@@ -7,7 +7,7 @@
         <h2>Carrito de Compras</h2>
     </div>
 
-    <% if (Session["Seleccionados"] != null)
+    <% if (Session["ArticulosEnCarrito"] != null)
         { %>
     <div class="container">
         <div class="row">
@@ -18,7 +18,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-4">
-                                    <img src="https://via.placeholder.com/200" id="imgCarrito" class="img-fluid" alt="Responsive image">
+                                    <img src="https://via.placeholder.com/200" ID="imgCarrito" class="img-fluid" alt="Responsive image">
                                 </div>
                                 <div class="col">
                                     <div class="container">
@@ -42,7 +42,7 @@
                                                 <p>Cantidad</p>
                                             </div>
                                             <div class="col">
-                                                <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />
+                                                <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" OnTextChanged="tbxCantidad_TextChanged" />
                                             </div>
                                             <div class="col-6 text-end">
                                                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" />

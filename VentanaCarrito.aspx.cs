@@ -13,18 +13,18 @@ namespace TPWebForm_equipo_5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Seleccionados"] != null)
+            if (Session["ArticulosEnCarrito"] != null)
             {
-                List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
+                List<Articulo> ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
 
                 if (!IsPostBack)
                 {
-                    repCarrito.DataSource = seleccionados;
+                    repCarrito.DataSource = ArticulosEnCarrito;
                     repCarrito.DataBind();
 
-                    decimal SubtotalCarrito = CalcularCarritoTotal(seleccionados);
-                    lblTotalCompra.Text = "Total del Carrito: $" + SubtotalCarrito.ToString("0.00");
-                    lblEnvio.Text = "Costo de envío: $" + 5000.ToString("0.00"); ;
+                    decimal SubtotalCarrito = CalcularCarritoTotal(ArticulosEnCarrito);
+                    lblSubTotal.Text = "Subtotal: $" + SubtotalCarrito.ToString("0.00");
+                    lblEnvio.Text = "Envío: $" + 5000.ToString("0.00"); ;
                     lblTotalCompra.Text = "Total: $" + (SubtotalCarrito + 5000).ToString("0.00");
                 }
             }
@@ -34,26 +34,26 @@ namespace TPWebForm_equipo_5
             Button btn = (Button)sender;
             int IDArticulo = Convert.ToInt32(btn.CommandArgument);
 
-            List<Articulo> seleccionados;
-            if (Session["Seleccionados"] != null)
+            List<Articulo> ArticulosEnCarrito;
+            if (Session["ArticulosEnCarrito"] != null)
             {
-                seleccionados = (List<Articulo>)Session["Seleccionados"];
+                ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
             }
             else
             {
-                seleccionados = new List<Articulo>();
+                ArticulosEnCarrito = new List<Articulo>();
             }
 
             List<Articulo> nuevaLista = new List<Articulo>();
             bool eliminado = false;
 
-            foreach (var articulo in seleccionados)
+            foreach (var articulo in ArticulosEnCarrito)
             {
                 if (!eliminado && articulo.Id == IDArticulo) { eliminado = true; }
                 else { nuevaLista.Add(articulo); }
             }
 
-            Session["Seleccionados"] = nuevaLista;
+            Session["ArticulosEnCarrito"] = nuevaLista;
             Response.Redirect(Request.RawUrl);
             repCarrito.DataSource = nuevaLista;
             repCarrito.DataBind();
@@ -76,6 +76,11 @@ namespace TPWebForm_equipo_5
             }
 
             return total;
+        }
+        protected void tbxCantidad_TextChanged(object sender, EventArgs e)
+        {
+            //Resolver (puede que haya que agregar una propiedad nueva a articulo, con un constructor por defecto de 1)
+            //Luego hacer las cuentas correspondientes en el método CalcularCarritoTotal...
         }
     }
 }
