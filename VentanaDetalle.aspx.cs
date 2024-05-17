@@ -24,6 +24,7 @@ namespace TPWebForm_equipo_5
             listaImagenes = lecturaImagen.listar(listaLecturaArticulos[0].Id); //Revisar
             indiceMaximo = lecturaImagen.maximoImagen(listaLecturaArticulos[0].Id);
             Articulo seleccionado = new Articulo();
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["id"] != null) //Revisar como esw enviado el id
@@ -54,6 +55,8 @@ namespace TPWebForm_equipo_5
             Session.Add("cantidadDetalle", cantidad);
 
             Response.Redirect("VentanaCarrito.aspx", false);
+
+            //Modificar para adaptar con carrito
         }
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
