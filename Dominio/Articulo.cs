@@ -32,6 +32,6 @@ namespace Dominio
         [DisplayName("Categoría")]
         public Categoria Categoria { get; set; }
         public string ImagenUrl { get; set; }
-        public SqlMoney Precio { get; set; }
+        public decimal Precio { get; set; }
     }
 }

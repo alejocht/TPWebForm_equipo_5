@@ -68,9 +68,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <asp:Label ID="lblSubTotal" runat="server" Text="Subtotal: xxxx" CssClass="p" />
-                            <asp:Label ID="lblEnvio" runat="server" Text="Envio: xxxx" CssClass="p" />
-                            <asp:Label ID="lblTotalCompra" runat="server" Text="Total: $xxxx" CssClass="h4" />
+                            <div>
+                                <asp:Label ID="lblSubTotal" runat="server" Text="Subtotal: xxxx" CssClass="p" />
+                            </div>
+                            <div>
+                                <asp:Label ID="lblEnvio" runat="server" Text="Envio: xxxx" CssClass="p" />
+                            </div>
+                            <div>
+                                <asp:Label ID="lblTotalCompra" runat="server" Text="Total: $xxxx" CssClass="h4" />
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="row">

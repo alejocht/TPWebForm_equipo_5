@@ -23,7 +23,7 @@ namespace TPWebForm_equipo_5
                     repCarrito.DataBind();
 
                     decimal SubtotalCarrito = CalcularCarritoTotal(ArticulosEnCarrito);
-                    lblSubTotal.Text = "Subtotal: $" + SubtotalCarrito.ToString("0.00");
+                    lblSubTotal.Text = "Subtotal: $" + SubtotalCarrito.ToString("F2");
                     lblEnvio.Text = "Envío: $" + 5000.ToString("0.00"); ;
                     lblTotalCompra.Text = "Total: $" + (SubtotalCarrito + 5000).ToString("0.00");
                 }
@@ -32,7 +32,7 @@ namespace TPWebForm_equipo_5
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            int IDArticulo = Convert.ToInt32(btn.CommandArgument);
+            int id = int.Parse(btn.CommandArgument); //revisar
 
             List<Articulo> ArticulosEnCarrito;
             if (Session["ArticulosEnCarrito"] != null)
@@ -49,7 +49,7 @@ namespace TPWebForm_equipo_5
 
             foreach (var articulo in ArticulosEnCarrito)
             {
-                if (!eliminado && articulo.Id == IDArticulo) { eliminado = true; }
+                if (!eliminado && articulo.Id == id) { eliminado = true; }
                 else { nuevaLista.Add(articulo); }
             }
 
@@ -60,7 +60,7 @@ namespace TPWebForm_equipo_5
         }
         protected void btnContinuarComprando_Click(object sender, EventArgs e)
         {
-            Response.Redirect("VentanaPrincipal.aspx");
+            Response.Redirect("VentanaProductos.aspx");
         }
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {

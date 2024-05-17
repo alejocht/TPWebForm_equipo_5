@@ -2,6 +2,7 @@
 using LecturaDatos;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -12,56 +13,47 @@ namespace TPWebForm_equipo_5
 {
     public partial class VentanaDetalle : System.Web.UI.Page
     {
-        private List<Articulo> listaLecturaArticulos;
+        public List<Articulo> listaLecturaArticulos;
         private List<Imagen> listaImagenes;
-        int indiceMaximo = 1;
+        private Articulo seleccionado = null;
+        int indiceMaximo = 0;
         int indiceActual = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            LecturaArticulo lecturaArticulo = new LecturaArticulo();
-            listaLecturaArticulos = lecturaArticulo.listar();
-            LecturaImagen lecturaImagen = new LecturaImagen();
-            listaImagenes = lecturaImagen.listar(listaLecturaArticulos[0].Id); //Revisar
-            indiceMaximo = lecturaImagen.maximoImagen(listaLecturaArticulos[0].Id);
-            Articulo seleccionado = new Articulo();
-
-            if (!IsPostBack)
+            //if (Request.QueryString["id"] != null) //Revisar como es enviado el id (de VentanaProductos)
             {
-                if (Request.QueryString["id"] != null) //Revisar como esw enviado el id
-                {
-                    int id = Convert.ToInt32(Request.QueryString["id"]);
-                    lecturaImagen.listar(id); //revisar como se envia el id
-                    listaImagenes = lecturaImagen.listar(id);
-                    tbxCantidad.Text = 1.ToString();
-                }
+                int id = 50; //Simulacion de id de articulo
+                             //int id = int.Parse(Request.QueryString["id"]);
+
+                LecturaArticulo lecturaArticulo = new LecturaArticulo();
+                listaLecturaArticulos = lecturaArticulo.listar();
+                seleccionado = listaLecturaArticulos.Find(x => x.Id == id);
+
                 lblNombreArticulo.Text = seleccionado.Nombre;
-                lblPrecio.Text = seleccionado.Precio.ToString();
+                lblPrecio.Text = seleccionado.Precio.ToString("F2");
                 lblDescripcion.Text = seleccionado.Descripcion;
-                lblCategoria.Text = seleccionado.Categoria.ToString();
-                lblMarca.Text = seleccionado.Marca.ToString();
+                lblCategoria.Text = "Categoría: " + seleccionado.Categoria.Descripcion.ToString();
+                lblMarca.Text = "Marca: " + seleccionado.Marca.Descripcion.ToString();
+
+                tbxCantidad.Text = 1.ToString();
+
+                LecturaImagen lecturaImagen = new LecturaImagen();
+                indiceMaximo = lecturaImagen.maximoImagen(id);
+                cargarImagen(id);
             }
         }
 
         protected void btnComprarAhora_Click(object sender, EventArgs e)
         {
-            string nombreArticulo = lblNombreArticulo.Text;
-            string precio = lblPrecio.Text;
-            string descripcion = lblDescripcion.Text;
-            string cantidad = tbxCantidad.Text;
-
-            Session.Add("nombreArticuloDetalle", nombreArticulo);
-            Session.Add("precioDetalle", precio);
-            Session.Add("descripcionDetalle", descripcion);
-            Session.Add("cantidadDetalle", cantidad);
-
-            Response.Redirect("VentanaCarrito.aspx", false);
-
-            //Modificar para adaptar con carrito
+            cargarCarrito();
+            Response.Redirect("VentanaCarrito.aspx");
         }
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            
+            cargarCarrito();
+            //agregar ventana de confirmacion
         }
 
         protected void btnEnviarConsulta_Click(object sender, EventArgs e)
@@ -77,6 +69,44 @@ namespace TPWebForm_equipo_5
             else
             {
                 //lblMensaje.Text = "Por favor, complete todos los campos";
+            }
+        }
+
+        public void cargarCarrito()
+        {
+            Articulo compra = new Articulo();
+            compra.Nombre = lblNombreArticulo.Text;
+            compra.Precio = decimal.Parse(lblPrecio.Text);
+            compra.Descripcion = lblDescripcion.Text;
+            compra.Categoria.Descripcion = lblCategoria.Text;
+            compra.Marca.Descripcion = lblMarca.Text;
+            int Cantidad = int.Parse(tbxCantidad.Text);
+
+            if (Session["ArticulosEnCarrito"] != null)
+            {
+                List<Articulo> ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
+                ArticulosEnCarrito.Add(compra);
+                Session["ArticulosEnCarrito"] = ArticulosEnCarrito;
+            }
+            else
+            {
+                List<Articulo> ArticulosEnCarrito = new List<Articulo>();
+                ArticulosEnCarrito.Add(compra);
+                Session["ArticulosEnCarrito"] = ArticulosEnCarrito;
+            }
+        }
+        private void cargarImagen(int Id)
+        {
+            try
+            {
+                LecturaImagen lecturaImagen = new LecturaImagen();
+                listaImagenes = lecturaImagen.listar(Id);
+
+                imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;              
+            }
+            catch (Exception)
+            {
+                imgUrlArticulo.ImageUrl = "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
             }
         }
     }

@@ -60,6 +60,52 @@ namespace LecturaDatos
                 datos.CerrarConexion();
             }
         }
+        public List<Articulo> listar(int id)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("SELECT A.Codigo, A.Nombre, A.Descripcion AS DescripcionArticulo, M.Descripcion AS Marca, C.Descripcion AS Categoria, I.ImagenUrl, A.Precio, M.Id AS IdMarca, C.Id AS IdCategoria FROM ARTICULOS A INNER JOIN MARCAS M ON M.Id = A.IdMarca INNER JOIN CATEGORIAS C ON C.Id = A.IdCategoria LEFT JOIN IMAGENES I ON I.IdArticulo = A.Id WHERE NOT EXISTS (SELECT 1 FROM ARTICULOS A2 INNER JOIN IMAGENES I2 ON I2.IdArticulo = A2.Id WHERE A2.Codigo = A.Codigo AND I2.Id > I.Id) ");
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["DescripcionArticulo"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+
+                    aux.Marca = new Marca();
+                    if (!Convert.IsDBNull(datos.Lector["IdMarca"]))
+                        aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                    if (!Convert.IsDBNull(datos.Lector["Marca"]))
+                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+
+                    aux.Categoria = new Categoria();
+                    if (!Convert.IsDBNull(datos.Lector["IdCategoria"]))
+                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    if (!Convert.IsDBNull(datos.Lector["Categoria"]))
+                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+
+                    if (!Convert.IsDBNull(datos.Lector["ImagenUrl"]))
+                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
 
         //Agrega datos a la dgv
         public void agregar(Articulo nuevo)
@@ -357,5 +403,7 @@ namespace LecturaDatos
                 throw ex;
             }
         }
+
+
     }
 }
