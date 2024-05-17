@@ -12,7 +12,9 @@ namespace TPWebForm_equipo_5
     public partial class VentanaProductos : System.Web.UI.Page
     {
         public List<Articulo> listaLecturaArticulos;
+        public Articulo articulosellecionado;
         string busqueda = null;
+        bool cartasfiltradas;
         private void filtrarArticulo(string filtro)
         {
             List<Articulo> listaFiltrada;
@@ -21,10 +23,14 @@ namespace TPWebForm_equipo_5
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            cargarddl();
-            cargardatos();
-            ordenarcards();
+                cargardatos();
+            if (!IsPostBack)
+            {
+                cargarddl();
+                repRepetidor.DataSource = listaLecturaArticulos;
+                repRepetidor.DataBind();
+            }
+
             busqueda = Request.QueryString["busqueda"];
             if (busqueda != null) filtrarArticulo(busqueda);
         }
@@ -33,10 +39,7 @@ namespace TPWebForm_equipo_5
             LecturaArticulo lecturaArticulo = new LecturaArticulo();
             listaLecturaArticulos = lecturaArticulo.listar();
         }
-        public void ordenarpag(int value)
-        {
-            if (value == 0) { }
-        }
+
 
         public void cargarddl()
         {
@@ -45,18 +48,48 @@ namespace TPWebForm_equipo_5
             DdlOrden.Items.Add("Precio ↓");
         }
 
-        public void ordenarcards()
+        public void modificarlista()
         {
-            List<Articulo> listaFiltrada = new List<Articulo>();
-            if(DdlOrden.SelectedValue == "Precio ↑") {
-               listaFiltrada = listaLecturaArticulos.OrderBy(x => x.Precio).ToList();
-            } //else //if(DdlOrden.SelectedValue == "Precio ↓")
-            listaLecturaArticulos = new List<Articulo>(listaFiltrada);
-            
+
         }
 
-        public void modificarlista() {
+        protected void btnEjemplo_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(((Button)sender).CommandArgument);
             
+            Session.Add("ArticulosEnCarrito", id);
+
+            Response.Redirect("VentanaCarrito.aspx", false);
+
+        }
+
+        protected void DdlOrden_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            cargardatos();
+            listaFiltrada = listaLecturaArticulos;
+
+            if (DdlOrden.SelectedValue == "Precio ↑")
+            {
+                listaFiltrada = listaLecturaArticulos.OrderByDescending(x => x.Precio).ToList();
+                listaLecturaArticulos = listaFiltrada;
+                repRepetidor.DataSource = listaLecturaArticulos;
+                repRepetidor.DataBind();
+            }
+            else if (DdlOrden.SelectedValue == "Precio ↓")
+            {
+                listaFiltrada = listaLecturaArticulos.OrderBy(x => x.Precio).ToList();
+                listaLecturaArticulos = listaFiltrada;
+                repRepetidor.DataSource = listaLecturaArticulos;
+                repRepetidor.DataBind();
+            }
+            else
+            {
+                listaFiltrada = listaLecturaArticulos.OrderBy(x => x.Nombre).ToList();
+                listaLecturaArticulos = listaFiltrada;
+                repRepetidor.DataSource = listaLecturaArticulos;
+                repRepetidor.DataBind();
+            }
         }
     }
 }
