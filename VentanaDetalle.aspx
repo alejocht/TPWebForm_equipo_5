@@ -7,9 +7,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <br />
-                <asp:Image ID="imgUrlArticulo" runat="server" alt="Imagen del producto" class="img-fluid" />
-                <div class="imagen-container">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <%if (listaImagenes.Count() > 1)
+                            { %>
+                        <div class="carousel-item active">
+                            <img src="..." class="d-block w-100" alt="Imagen">
+                        </div>
+                        <% foreach (var item in listaImagenes)
+                            { %>
+                        <div class="carousel-item">
+                            <img src="<% //COLOCAR URL IMAGEN %>" class="d-block w-100" alt="...">
+                        </div>
+                        <% }
+                            }
+                            else
+                            { %>
+                        <div class="carousel-item active">
+                            <img src="..." class="d-block w-100" alt="Imagen">
+                        </div>
+                        <% }
+                        %>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
             <div class="col-md-7">
@@ -52,27 +79,6 @@
             </div>
         </div>
     </div>
-    <%if (listaImagenes.Count() > 1)
-        { %>
-        <div>
-        <asp:Button ID="BtnImagenes" runat="server" Text="Mas Imagenes..." onclick="BtnImagenes_Click"/>
-        <%if (masImagenes)
-            {%>
-                <ul>
-                    
-             <% foreach (Dominio.Imagen img in listaImagenes)
-                {%>
-                    <li>
-                        <div class="card" style="width: 18rem;">
-                        <img src="<%:img.ImagenUrl%>" class="card-img-top" alt="...">
-                        </div>
-                    </li>
-              <%}%>
-            
-                </ul>
-        <%}%>
-    </div>
-     <%}%>
     <div class="container">
         <div class="container text-center">
             <h3>¿Requiere más información?</h3>
