@@ -11,19 +11,26 @@ namespace TPWebForm_equipo_5
 {
     public partial class VentanaCarrito : System.Web.UI.Page
     {
+        public List<Articulo> listaLecturaArticulos;
+        public Articulo articulo;
+        public int indice=0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["ArticulosEnCarrito"] != null)
-            {
-                List<Articulo> ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
-
+            {               
+                
                 if (!IsPostBack)
                 {
-                    repCarrito.DataSource = ArticulosEnCarrito;
+                    listaLecturaArticulos =new List<Articulo>();
+                    articulo = (Articulo)Session["ArticulosEnCarrito"];
+                    listaLecturaArticulos.Add(articulo);
+
+                    repCarrito.DataSource = listaLecturaArticulos ;
                     repCarrito.DataBind();
 
-                    decimal SubtotalCarrito = CalcularCarritoTotal(ArticulosEnCarrito);
+                    decimal SubtotalCarrito = CalcularCarritoTotal(listaLecturaArticulos);
                     lblSubTotal.Text = "Subtotal: $" + SubtotalCarrito.ToString("F2");
+
                     lblEnvio.Text = "Envío: $" + 5000.ToString("0.00"); ;
                     lblTotalCompra.Text = "Total: $" + (SubtotalCarrito + 5000).ToString("0.00");
                 }
