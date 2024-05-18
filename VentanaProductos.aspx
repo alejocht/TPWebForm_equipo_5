@@ -19,24 +19,25 @@
     </div>
 
     <div class="container text-center">
-    <div class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center"  >
-        <% foreach (Dominio.Articulo item in listaLecturaArticulos)
-            {
-        %>
-
-        <div class="col d-flex justify-content-center">
-            <div class="card">
-                <img src="<%=item.ImagenUrl%>" class="card-img-top" alt="Responsive image">
-                <div class="card-body">
-                    <h5 class="card-title" style="color: #E7ECEF"><%=item.Nombre%></h5>
-                    <p class="card-text" style="color: #E7ECEF"><%=item.Descripcion%></p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-body-secondary">Precio: $<%=item.Precio%> </small>
-                </div>
-            </div>
-        </div>
-        <%  } %>
+    <div class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center"  >         
+        <asp:Repeater runat="server" id="repRepetidor">
+            <ItemTemplate>
+                 <div class="col d-flex justify-content-center">
+     <div class="card">
+         <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="Responsive image">
+         <div class="card-body">
+             <h5 class="card-title" style="color: #E7ECEF"><%#Eval("Nombre")%></h5>
+             <asp:button text="Detalles" runat="server" CssClass="btn btn-dark" id="Btndetalle"  CommandArgument ='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="Btndetalle_Click" />
+         </div>
+         <div class="card-footer">
+             <asp:button text="Comprar ahora" runat="server" CssClass="btn btn-primary" id="btnComprarahora" OnClick="btnComprarahora_Click" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId"  />
+             <br />
+             <small style="color:white">Precio: $<%#Eval("Precio")%> </small>
+         </div>
+     </div>
+ </div>
+            </ItemTemplate>
+        </asp:Repeater> 
         </div>
     </div>
 </asp:Content>
