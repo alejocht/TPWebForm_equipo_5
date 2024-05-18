@@ -40,7 +40,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <asp:Label ID="Contador" runat="server" Text="0" ></asp:Label>
+                                <asp:Label ID="Contador" runat="server" Text="0"></asp:Label>
                             </li>
                         </ul>
                     </div>

@@ -13,7 +13,18 @@ namespace TPWebForm_equipo_5
     {
         public List<Articulo> listaLecturaArticulos;
         public Articulo artseleccionado;
-        string busqueda = null;
+        public string busqueda = null;
+        public bool listaMostrable;
+
+        public void validarListaMostrable()
+        {
+            int cantidadRegistros = listaLecturaArticulos.Count();
+            listaMostrable = true;
+            if (cantidadRegistros < 1)
+            {
+                listaMostrable=false;
+            }
+        }
         private void filtrarArticulo(string filtro)
         {
             List<Articulo> listaFiltrada;
@@ -26,6 +37,7 @@ namespace TPWebForm_equipo_5
                 cargardatos();
                 busqueda = Request.QueryString["busqueda"];
                 if (busqueda != null) filtrarArticulo(busqueda);
+                validarListaMostrable();
             if (!IsPostBack)
             {
                 cargarddl();
