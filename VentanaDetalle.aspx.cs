@@ -19,16 +19,35 @@ namespace TPWebForm_equipo_5
         int indiceMaximo = 0;
         int indiceActual = 0;
 
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
+        //    if (Session["ArticulosEnCarrito"] != null )
+        //    {
+        //        seleccionado = (Articulo)Session["ArticulosEnCarrito"];
+
+        //        lblNombreArticulo.Text = seleccionado.Nombre;
+        //        lblPrecio.Text = seleccionado.Precio.ToString("F2");
+        //        lblDescripcion.Text = seleccionado.Descripcion;
+        //        lblCategoria.Text = "Categoría: " + seleccionado.Categoria.Descripcion.ToString();
+        //        lblMarca.Text = "Marca: " + seleccionado.Marca.Descripcion.ToString();
+
+        //        tbxCantidad.Text = 1.ToString();
+
+        //        LecturaImagen lecturaImagen = new LecturaImagen();
+        //        indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);
+        //        cargarImagen(seleccionado.Id);
+        //    }
+        //}
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["ArticulosEnCarrito"] != null ) //Revisar como es enviado el id (de VentanaProductos)
+            //if (Request.QueryString["id"] != null) //Revisar como es enviado el id (de VentanaProductos)
             {
-                //int id = 50; //Simulacion de id de articulo
+                int id = 50; //Simulacion de id de articulo
                              //int id = int.Parse(Request.QueryString["id"]);
 
-                //LecturaArticulo lecturaArticulo = new LecturaArticulo();
-                //listaLecturaArticulos = lecturaArticulo.listar();
-                seleccionado = (Articulo)Session["ArticulosEnCarrito"];
+                LecturaArticulo lecturaArticulo = new LecturaArticulo();
+                listaLecturaArticulos = lecturaArticulo.listar();
+                seleccionado = listaLecturaArticulos.Find(x => x.Id == id);
 
                 lblNombreArticulo.Text = seleccionado.Nombre;
                 lblPrecio.Text = seleccionado.Precio.ToString("F2");
@@ -39,8 +58,8 @@ namespace TPWebForm_equipo_5
                 tbxCantidad.Text = 1.ToString();
 
                 LecturaImagen lecturaImagen = new LecturaImagen();
-                indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);
-                cargarImagen(seleccionado.Id);
+                indiceMaximo = lecturaImagen.maximoImagen(id);
+                cargarImagen(id);
             }
         }
 
