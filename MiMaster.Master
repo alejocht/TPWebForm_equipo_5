@@ -18,7 +18,7 @@
   <header>
       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#274C77">
     <div class="container-fluid">
-        <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="VentanaPrincipal.aspx"><h3 style="color: white; width: 20%;">CarritoWeb</h3></a>
+        <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="VentanaProductos.aspx"><h3 style="color: white; width: 20%;">CarritoWeb</h3></a>
         <div class="d-inline-flex p-2 w-50 justify-content-center" id="navbarSupportedContent">
                     <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control me-2"></asp:TextBox>
 
@@ -27,10 +27,7 @@
         <div>
             <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0" style="color: white; width: 20%;">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="VentanaPrincipal.aspx">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="VentanaProductos.aspx">Productos</a>
+                    <a class="nav-link active" aria-current="page" href="VentanaProductos.aspx">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#about">Contacto</a>

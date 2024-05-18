@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div style="height:800px">
     <div class="container">
         <h2>Carrito de Compras</h2>
     </div>
@@ -115,4 +116,5 @@
         </div>
     </div>
     <% } %>
+    </div>
 </asp:Content>
