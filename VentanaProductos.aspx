@@ -11,8 +11,8 @@
     </div>
 
 
-    <div class="container d-flex justify-content-end" style="margin-right: 10px">
-        <asp:DropDownList ID="DdlOrden" runat="server"
+    <div class="container d-flex justify-content-end" style="margin-right: 10px"  >
+        <asp:DropDownList ID="DdlOrden" runat="server" OnSelectedIndexChanged="DdlOrden_SelectedIndexChanged" AutoPostBack="true"
             aria-label="Default select example">
         </asp:DropDownList>
     </div>

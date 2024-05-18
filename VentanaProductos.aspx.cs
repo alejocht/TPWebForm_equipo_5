@@ -22,12 +22,14 @@ namespace TPWebForm_equipo_5
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+
                 cargardatos();
             if (!IsPostBack)
             {
                 cargarddl();
                 repRepetidor.DataSource = listaLecturaArticulos;
                 repRepetidor.DataBind();
+
                 busqueda = Request.QueryString["busqueda"];
                 if (busqueda != null) filtrarArticulo(busqueda);
             }
@@ -49,22 +51,6 @@ namespace TPWebForm_equipo_5
             DdlOrden.Items.Add("Precio ↓");
         }
 
-        public void ordenarcards()
-        {
-            List<Articulo> listaFiltrada = new List<Articulo>();
-            if (DdlOrden.SelectedValue == "Precio ↑")
-            {
-                listaFiltrada = listaLecturaArticulos.OrderBy(x => x.Precio).ToList();
-            } //else //if(DdlOrden.SelectedValue == "Precio ↓")
-            listaLecturaArticulos = new List<Articulo>(listaFiltrada);
-
-        }
-
-        public void modificarlista()
-        {
-
-        }
-
         protected void btnComprarAhora_Click(object sender, EventArgs e)
         {
             int id = int.Parse(((Button)sender).CommandArgument);
@@ -72,13 +58,32 @@ namespace TPWebForm_equipo_5
             {
                 if (id == item.Id)
                 {
-                    artseleccionado=item;
+                    artseleccionado = item;
                 }
             }
 
             Session.Add("ArticulosEnCarrito", artseleccionado);
 
             Response.Redirect("VentanaCarrito.aspx", false);
+        }
+
+        protected void DdlOrden_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            
+
+            if (DdlOrden.SelectedValue == "Precio ↑")
+            {
+                listaFiltrada = listaLecturaArticulos.OrderByDescending(x => x.Precio).ToList();
+            }
+            else if (DdlOrden.SelectedValue == "Precio ↓")
+            {
+                listaFiltrada = listaLecturaArticulos.OrderBy(x => x.Precio).ToList();
+            }
+            else { listaFiltrada = listaLecturaArticulos.OrderBy(x => x.Nombre).ToList(); }
+            listaLecturaArticulos = listaFiltrada;
+            repRepetidor.DataSource = listaLecturaArticulos;
+            repRepetidor.DataBind();
         }
     }
 }
