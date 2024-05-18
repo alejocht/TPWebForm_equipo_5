@@ -98,11 +98,11 @@ namespace TPWebForm_equipo_5
                 LecturaImagen lecturaImagen = new LecturaImagen();
                 listaImagenes = lecturaImagen.listar(Id);
 
-                imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;
+                //imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;
             }
             catch (Exception)
             {
-                imgUrlArticulo.ImageUrl = "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
+                //imgUrlArticulo.ImageUrl = "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
             }
         }
 
