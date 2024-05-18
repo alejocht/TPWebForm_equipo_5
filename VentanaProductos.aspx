@@ -26,7 +26,7 @@
                             <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="Responsive image">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: #E7ECEF"><%#Eval("Nombre")%></h5>
-                                <p class="card-text" style="color: #E7ECEF"><%#Eval("Descripcion")%></p>
+                                <asp:button text="Detalles" runat="server" CssClass="btn btn-dark" id="Btndetalle"  CommandArgument ='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="Btndetalle_Click" />
                             </div>
                             <div class="card-footer">
                                 <asp:Button Text="Comprar ahora" CssClass="btn btn-primary" runat="server"  id="btnComprarAhora" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnComprarAhora_Click"/>

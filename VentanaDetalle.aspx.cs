@@ -21,14 +21,14 @@ namespace TPWebForm_equipo_5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Request.QueryString["id"] != null) //Revisar como es enviado el id (de VentanaProductos)
+            if (Session["ArticulosEnCarrito"] != null ) //Revisar como es enviado el id (de VentanaProductos)
             {
-                int id = 50; //Simulacion de id de articulo
+                //int id = 50; //Simulacion de id de articulo
                              //int id = int.Parse(Request.QueryString["id"]);
 
-                LecturaArticulo lecturaArticulo = new LecturaArticulo();
-                listaLecturaArticulos = lecturaArticulo.listar();
-                seleccionado = listaLecturaArticulos.Find(x => x.Id == id);
+                //LecturaArticulo lecturaArticulo = new LecturaArticulo();
+                //listaLecturaArticulos = lecturaArticulo.listar();
+                seleccionado = (Articulo)Session["ArticulosEnCarrito"];
 
                 lblNombreArticulo.Text = seleccionado.Nombre;
                 lblPrecio.Text = seleccionado.Precio.ToString("F2");
@@ -39,8 +39,8 @@ namespace TPWebForm_equipo_5
                 tbxCantidad.Text = 1.ToString();
 
                 LecturaImagen lecturaImagen = new LecturaImagen();
-                indiceMaximo = lecturaImagen.maximoImagen(id);
-                cargarImagen(id);
+                indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);
+                cargarImagen(seleccionado.Id);
             }
         }
 
@@ -74,24 +74,18 @@ namespace TPWebForm_equipo_5
 
         public void cargarCarrito()
         {
-            Articulo compra = new Articulo();
-            compra.Nombre = lblNombreArticulo.Text;
-            compra.Precio = decimal.Parse(lblPrecio.Text);
-            compra.Descripcion = lblDescripcion.Text;
-            compra.Categoria.Descripcion = lblCategoria.Text;
-            compra.Marca.Descripcion = lblMarca.Text;
-            int Cantidad = int.Parse(tbxCantidad.Text);
+            Session["ArticulosEnCarrito"] = Session["DetalleArticulo"];
 
             if (Session["ArticulosEnCarrito"] != null)
             {
                 List<Articulo> ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
-                ArticulosEnCarrito.Add(compra);
+                ArticulosEnCarrito.Add(seleccionado);
                 Session["ArticulosEnCarrito"] = ArticulosEnCarrito;
             }
             else
             {
                 List<Articulo> ArticulosEnCarrito = new List<Articulo>();
-                ArticulosEnCarrito.Add(compra);
+                ArticulosEnCarrito.Add(seleccionado);
                 Session["ArticulosEnCarrito"] = ArticulosEnCarrito;
             }
         }

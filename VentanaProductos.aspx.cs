@@ -71,7 +71,6 @@ namespace TPWebForm_equipo_5
         {
             List<Articulo> listaFiltrada;
             
-
             if (DdlOrden.SelectedValue == "Precio ↑")
             {
                 listaFiltrada = listaLecturaArticulos.OrderByDescending(x => x.Precio).ToList();
@@ -84,6 +83,21 @@ namespace TPWebForm_equipo_5
             listaLecturaArticulos = listaFiltrada;
             repRepetidor.DataSource = listaLecturaArticulos;
             repRepetidor.DataBind();
+        }
+        protected void Btndetalle_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(((Button)sender).CommandArgument);
+            foreach (var item in listaLecturaArticulos)
+            {
+                if (id == item.Id)
+                {
+                    artseleccionado = item;
+                }
+
+            }
+            Session.Add("ArticulosEnCarrito", artseleccionado);
+
+            Response.Redirect("VentanaDetalle.aspx", false);
         }
     }
 }
