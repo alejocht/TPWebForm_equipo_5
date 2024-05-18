@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+
     <div class="container text-center">
         <h1>Productos</h1>
     </div>
@@ -14,29 +14,30 @@
     <div class="container d-flex justify-content-end" style="margin-right: 10px">
         <asp:DropDownList ID="DdlOrden" runat="server"
             aria-label="Default select example">
-            
         </asp:DropDownList>
     </div>
 
     <div class="container text-center">
-    <div class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center"  >
-        <% foreach (Dominio.Articulo item in listaLecturaArticulos)
-            {
-        %>
+        <div class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center">
+            <asp:Repeater runat="server" id="repRepetidor">
+                <itemtemplate>
+                    <div class="col d-flex justify-content-center">
+                        <div class="card">
+                            <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="Responsive image">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #E7ECEF"><%#Eval("Nombre")%></h5>
+                                <p class="card-text" style="color: #E7ECEF"><%#Eval("Descripcion")%></p>
+                            </div>
+                            <div class="card-footer">
+                                <asp:Button Text="Comprar ahora" CssClass="btn btn-primary" runat="server"  id="btnComprarAhora" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnComprarAhora_Click"/>
+                                <br />
+                                <small style="color:white">Precio: $<%#Eval("Precio")%> </small>
+                            </div>
+                        </div>
+                    </div>
+                </itemtemplate>
 
-        <div class="col d-flex justify-content-center">
-            <div class="card">
-                <img src="<%=item.ImagenUrl%>" class="card-img-top" alt="Responsive image">
-                <div class="card-body">
-                    <h5 class="card-title" style="color: #E7ECEF"><%=item.Nombre%></h5>
-                    <p class="card-text" style="color: #E7ECEF"><%=item.Descripcion%></p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-body-secondary">Precio: $<%=item.Precio%> </small>
-                </div>
-            </div>
-        </div>
-        <%  } %>
+            </asp:Repeater>
         </div>
     </div>
 </asp:Content>
