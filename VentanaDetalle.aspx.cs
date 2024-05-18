@@ -22,7 +22,7 @@ namespace TPWebForm_equipo_5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["ArticulosEnCarrito"] != null ) //Revisar como es enviado el id (de VentanaProductos)
+            if (Session["ArticulosEnCarrito"] != null )
             {            
                 seleccionado = (Articulo)Session["ArticulosEnCarrito"];
 
