@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -22,11 +23,6 @@ namespace TPWebForm_equipo_5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            {
-                masImagenes = false;
-            }
-
             if (Session["ArticulosEnCarrito"] != null ) //Revisar como es enviado el id (de VentanaProductos)
             {            
                 seleccionado = (Articulo)Session["ArticulosEnCarrito"];
@@ -88,12 +84,44 @@ namespace TPWebForm_equipo_5
                 LecturaImagen lecturaImagen = new LecturaImagen();
                 listaImagenes = lecturaImagen.listar(Id);
 
-                imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;              
+                //imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;
+                
             }
             catch (Exception)
             {
-                imgUrlArticulo.ImageUrl = "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
+                //imgUrlArticulo.ImageUrl = "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
             }
+        }
+        public void PopulateCarousel(List<string> imagePaths, Carousel carouselControl)
+        {
+            if (imagePaths == null || imagePaths.Count == 0)
+            {
+                // Handle empty list gracefully (e.g., display a message or default image)
+                return;
+            }
+
+            carouselControl.Controls.Clear(); // Ensure clean slate before population
+
+            StringBuilder carouselItemsHtml = new StringBuilder();
+
+            for (int i = 0; i < imagePaths.Count; i++)
+            {
+                string imagePath = listaImagenes[indiceActual].ImagenUrl;
+                string activeClass = i == 0 ? "active" : ""; // Set active class for first image
+
+                carouselItemsHtml.AppendFormat(
+                    @"<div class=""carousel-item {0}"">
+                <img src=""{1}"" class=""d-block w-100"" alt=""..."">
+            </div>",
+                    activeClass,
+                    imagePath);
+            }
+
+            carouselControl.InnerHtml = carouselItemsHtml.ToString();
+
+            // Optionally, initialize carousel behavior after population
+            // (Consider using a separate method for initialization)
+            // carouselControl.Initialize(); // Replace with your initialization logic
         }
 
         protected void BtnImagenes_Click(object sender, EventArgs e)
