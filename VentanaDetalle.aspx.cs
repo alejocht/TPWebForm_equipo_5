@@ -22,39 +22,49 @@ namespace TPWebForm_equipo_5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 masImagenes = false;
+
+
+                if (Session["ArticulosEnCarrito"] != null) //Revisar como es enviado el id (de VentanaProductos)
+                {
+                    seleccionado = (Articulo)Session["ArticulosEnCarrito"];
+                    lblNombreArticulo.Text = seleccionado.Nombre;
+                    lblPrecio.Text = seleccionado.Precio.ToString("F2");
+                    lblDescripcion.Text = seleccionado.Descripcion;
+                    lblCategoria.Text = "Categoría: " + seleccionado.Categoria.Descripcion.ToString();
+                    lblMarca.Text = "Marca: " + seleccionado.Marca.Descripcion.ToString();
+                    tbxCantidad.Text = 1.ToString();
+
+                    LecturaImagen lecturaImagen = new LecturaImagen();
+                    indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);
+                    cargarImagen(seleccionado.Id);
+                    Session.Add("ProductoEndetalle", seleccionado);
+
+                    Session["ArticulosEnCarrito"]=null;
+
+                }
             }
 
-            if (Session["ArticulosEnCarrito"] != null ) //Revisar como es enviado el id (de VentanaProductos)
-            {            
-                seleccionado = (Articulo)Session["ArticulosEnCarrito"];
-
-                lblNombreArticulo.Text = seleccionado.Nombre;
-                lblPrecio.Text = seleccionado.Precio.ToString("F2");
-                lblDescripcion.Text = seleccionado.Descripcion;
-                lblCategoria.Text = "Categoría: " + seleccionado.Categoria.Descripcion.ToString();
-                lblMarca.Text = "Marca: " + seleccionado.Marca.Descripcion.ToString();
-
-                tbxCantidad.Text = 1.ToString();
-
-                LecturaImagen lecturaImagen = new LecturaImagen();
-                indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);
-                cargarImagen(seleccionado.Id);
-            }
-       
         }
 
         protected void btnComprarAhora_Click(object sender, EventArgs e)
         {
-            cargarCarrito();
+            seleccionado = (Articulo)Session["ProductoEndetalle"];
+                        
+            Session.Add("ArticulosEnCarrito", seleccionado);
+
             Response.Redirect("VentanaCarrito.aspx");
         }
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            cargarCarrito();
+
+            Session.Add("listaArticulosEnCarrito", seleccionado);
+
+            Response.Redirect("VentanaProductos.aspx");
+
             //agregar ventana de confirmacion
         }
 
@@ -76,10 +86,10 @@ namespace TPWebForm_equipo_5
 
         public void cargarCarrito()
         {
-            if (seleccionado!=null)
-            {                  
+            if (seleccionado != null)
+            {
                 Session.Add("ArticulosEnCarrito", seleccionado);
-            }            
+            }
         }
         private void cargarImagen(int Id)
         {
@@ -88,7 +98,7 @@ namespace TPWebForm_equipo_5
                 LecturaImagen lecturaImagen = new LecturaImagen();
                 listaImagenes = lecturaImagen.listar(Id);
 
-                imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;              
+                imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;
             }
             catch (Exception)
             {

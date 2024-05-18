@@ -8,9 +8,7 @@
         <h2>Carrito de Compras</h2>
     </div>
         
-    <% if (listaLecturaArticulos != null)
-        {
-            if (listaLecturaArticulos.Count > 0)
+    <%  if (listaLecturaArticulos.Count > 0)
             { %>
     <div class="container">
         <div class="row">
@@ -48,7 +46,7 @@
                                                 <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" OnTextChanged="tbxCantidad_TextChanged" />
                                             </div>
                                             <div class="col-6 text-end">
-                                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar"  CssClass="btn btn-danger" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' CommandName="IdArticulo" AutoPostBack="true"/>
+                                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar"  CssClass="btn btn-danger" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' CommandName="IdArticulo" />
                                             </div>
                                         </div>
                                     </div>
@@ -90,8 +88,7 @@
             </div>
         </div>
     </div>
-    <% }
-        }
+    <%   }
         else
         { %>
     <div class="container" style ="min-height: 100vh;">

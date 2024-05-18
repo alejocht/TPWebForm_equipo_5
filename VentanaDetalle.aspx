@@ -44,7 +44,7 @@
                             <asp:TextBox ID="tbxCantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="1" />
                         </div>
                         <div class="col">
-                            <asp:Button ID="btnComprarAhora" runat="server" Text="Comprar ahora" CssClass="btn btn-primary" OnClick="btnComprarAhora_Click" />
+                            <asp:Button Text="Comprar ahora" CssClass="btn btn-primary" runat="server"  id="btnComprarAhora" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnComprarAhora_Click"/>
                             <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" OnClick="btnAgregarCarrito_Click" />
                         </div>
                     </div>

@@ -16,27 +16,30 @@ namespace TPWebForm_equipo_5
         public int indice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["ArticulosEnCarrito"] != null)
+
+
+            if (!IsPostBack)
             {
-
-                if (!IsPostBack)
+                if (listaLecturaArticulos == null)
                 {
-                    if (listaLecturaArticulos == null)
+                    if (Session["listaArticulosEnCarrito"] != null)
                     {
-                        if (Session["listaArticulosEnCarrito"] != null)
-                        {
-                            listaLecturaArticulos = (List<Articulo>)Session["listaArticulosEnCarrito"];
-                        }
-                        else
-                        {
-                            listaLecturaArticulos = new List<Articulo>();
-                        }
-
+                        listaLecturaArticulos = (List<Articulo>)Session["listaArticulosEnCarrito"];
                     }
+                    else
+                    {
+                        listaLecturaArticulos = new List<Articulo>();
+                    }
+
+                }
+                if (Session["ArticulosEnCarrito"] != null)
+                {
                     articulo = (Articulo)Session["ArticulosEnCarrito"];
                     listaLecturaArticulos.Add(articulo);
                     Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
 
+                    Session["ArticulosEnCarrito"] = null;
+                }
                     repCarrito.DataSource = listaLecturaArticulos;
                     repCarrito.DataBind();
 
@@ -45,8 +48,8 @@ namespace TPWebForm_equipo_5
 
                     lblEnvio.Text = "Envío: $" + 5000.ToString("0.00"); ;
                     lblTotalCompra.Text = "Total: $" + (SubtotalCarrito + 5000).ToString("0.00");
-                }
             }
+
         }
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -69,13 +72,14 @@ namespace TPWebForm_equipo_5
             }
 
             listaLecturaArticulos = nuevaLista;
-            if(listaLecturaArticulos.Count == 0)
+            if (listaLecturaArticulos.Count == 0)
             {
-                Session["ArticulosEnCarrito"]=null;
+                Session["ArticulosEnCarrito"] = null;
                 Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
                 Response.Redirect("VentanaProductos.aspx");
             }
-            else {
+            else
+            {
                 repCarrito.DataSource = listaLecturaArticulos;
                 repCarrito.DataBind();
                 Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
@@ -83,6 +87,7 @@ namespace TPWebForm_equipo_5
         }
         protected void btnContinuarComprando_Click(object sender, EventArgs e)
         {
+            Session["ArticulosEnCarrito"] = null;
             Response.Redirect("VentanaProductos.aspx");
         }
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
