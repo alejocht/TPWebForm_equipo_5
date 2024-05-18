@@ -32,7 +32,7 @@ namespace TPWebForm_equipo_5
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            int id = int.Parse(btn.CommandArgument); //revisar
+            int IdArticulo = int.Parse(btn.CommandArgument); //revisar
 
             List<Articulo> ArticulosEnCarrito;
             if (Session["ArticulosEnCarrito"] != null)
@@ -49,8 +49,14 @@ namespace TPWebForm_equipo_5
 
             foreach (var articulo in ArticulosEnCarrito)
             {
-                if (!eliminado && articulo.Id == id) { eliminado = true; }
-                else { nuevaLista.Add(articulo); }
+                if (!eliminado && articulo.Id == IdArticulo)
+                {
+                    eliminado = true;
+                }
+                else
+                {
+                    nuevaLista.Add(articulo);
+                }
             }
 
             Session["ArticulosEnCarrito"] = nuevaLista;
