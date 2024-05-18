@@ -71,7 +71,7 @@ namespace TPWebForm_equipo_5
         {
             if (seleccionado!=null)
             {                  
-                Session.Add("listaArticulosEnCarrito",seleccionado);
+                Session.Add("ArticulosEnCarrito", seleccionado);
             }            
         }
         private void cargarImagen(int Id)
