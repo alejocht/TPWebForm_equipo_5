@@ -24,15 +24,17 @@ namespace TPWebForm_equipo_5
         {
 
                 cargardatos();
+                busqueda = Request.QueryString["busqueda"];
+                if (busqueda != null) filtrarArticulo(busqueda);
             if (!IsPostBack)
             {
                 cargarddl();
                 repRepetidor.DataSource = listaLecturaArticulos;
                 repRepetidor.DataBind();
 
-                busqueda = Request.QueryString["busqueda"];
-                if (busqueda != null) filtrarArticulo(busqueda);
+               
             }
+            
         }
         public void cargardatos()
         {

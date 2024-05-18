@@ -96,6 +96,15 @@ namespace TPWebForm_equipo_5
         protected global::System.Web.UI.WebControls.Button btnAgregarCarrito;
 
         /// <summary>
+        /// Control BtnImagenes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnImagenes;
+
+        /// <summary>
         /// Control txtNombre.
         /// </summary>
         /// <remarks>

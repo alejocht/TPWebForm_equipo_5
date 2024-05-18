@@ -52,7 +52,27 @@
             </div>
         </div>
     </div>
-
+    <%if (listaImagenes.Count() > 1)
+        { %>
+        <div>
+        <asp:Button ID="BtnImagenes" runat="server" Text="Mas Imagenes..." onclick="BtnImagenes_Click"/>
+        <%if (masImagenes)
+            {%>
+                <ul>
+                    
+             <% foreach (Dominio.Imagen img in listaImagenes)
+                {%>
+                    <li>
+                        <div class="card" style="width: 18rem;">
+                        <img src="<%:img.ImagenUrl%>" class="card-img-top" alt="...">
+                        </div>
+                    </li>
+              <%}%>
+            
+                </ul>
+        <%}%>
+    </div>
+     <%}%>
     <div class="container">
         <div class="container text-center">
             <h3>¿Requiere más información?</h3>

@@ -14,13 +14,19 @@ namespace TPWebForm_equipo_5
     public partial class VentanaDetalle : System.Web.UI.Page
     {
         public List<Articulo> listacarrito;
-        private List<Imagen> listaImagenes;
+        public List<Imagen> listaImagenes;
         private Articulo seleccionado = null;
         int indiceMaximo = 0;
         int indiceActual = 0;
+        public bool masImagenes = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+                masImagenes = false;
+            }
+
             if (Session["ArticulosEnCarrito"] != null ) //Revisar como es enviado el id (de VentanaProductos)
             {            
                 seleccionado = (Articulo)Session["ArticulosEnCarrito"];
@@ -37,6 +43,7 @@ namespace TPWebForm_equipo_5
                 indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);
                 cargarImagen(seleccionado.Id);
             }
+       
         }
 
         protected void btnComprarAhora_Click(object sender, EventArgs e)
@@ -87,6 +94,11 @@ namespace TPWebForm_equipo_5
             {
                 imgUrlArticulo.ImageUrl = "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
             }
+        }
+
+        protected void BtnImagenes_Click(object sender, EventArgs e)
+        {
+            masImagenes = true;
         }
     }
 }

@@ -94,7 +94,7 @@
         }
         else
         { %>
-    <div class="container">
+    <div class="container" style ="min-height: 100vh;">
         <div class="row">
             <div class="col-9">
                 <h4>Lista de productos</h4>
