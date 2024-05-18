@@ -13,19 +13,31 @@ namespace TPWebForm_equipo_5
     {
         public List<Articulo> listaLecturaArticulos;
         public Articulo articulo;
-        public int indice=0;
+        public int indice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["ArticulosEnCarrito"] != null)
-            {               
-                
+            {
+
                 if (!IsPostBack)
                 {
-                    listaLecturaArticulos =new List<Articulo>();
+                    if (listaLecturaArticulos == null)
+                    {
+                        if (Session["listaArticulosEnCarrito"] != null)
+                        {
+                            listaLecturaArticulos = (List<Articulo>)Session["listaArticulosEnCarrito"];
+                        }
+                        else
+                        {
+                            listaLecturaArticulos = new List<Articulo>();
+                        }
+
+                    }
                     articulo = (Articulo)Session["ArticulosEnCarrito"];
                     listaLecturaArticulos.Add(articulo);
+                    Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
 
-                    repCarrito.DataSource = listaLecturaArticulos ;
+                    repCarrito.DataSource = listaLecturaArticulos;
                     repCarrito.DataBind();
 
                     decimal SubtotalCarrito = CalcularCarritoTotal(listaLecturaArticulos);
@@ -38,23 +50,13 @@ namespace TPWebForm_equipo_5
         }
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
-            int IdArticulo = int.Parse(btn.CommandArgument); //revisar
-
-            List<Articulo> ArticulosEnCarrito;
-            if (Session["ArticulosEnCarrito"] != null)
-            {
-                ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
-            }
-            else
-            {
-                ArticulosEnCarrito = new List<Articulo>();
-            }
+            int IdArticulo = int.Parse(((Button)sender).CommandArgument);
+            listaLecturaArticulos = (List<Articulo>)Session["listaArticulosEnCarrito"];
 
             List<Articulo> nuevaLista = new List<Articulo>();
             bool eliminado = false;
 
-            foreach (var articulo in ArticulosEnCarrito)
+            foreach (var articulo in listaLecturaArticulos)
             {
                 if (!eliminado && articulo.Id == IdArticulo)
                 {
@@ -66,10 +68,16 @@ namespace TPWebForm_equipo_5
                 }
             }
 
-            Session["ArticulosEnCarrito"] = nuevaLista;
-            Response.Redirect(Request.RawUrl);
-            repCarrito.DataSource = nuevaLista;
-            repCarrito.DataBind();
+            listaLecturaArticulos = nuevaLista;
+            if(listaLecturaArticulos.Count < 0)
+            {
+                Response.Redirect("VentanaCarrito.aspx");
+            }
+            else {
+                repCarrito.DataSource = listaLecturaArticulos;
+                repCarrito.DataBind();
+            }
+            Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
         }
         protected void btnContinuarComprando_Click(object sender, EventArgs e)
         {

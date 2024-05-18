@@ -67,6 +67,22 @@ namespace TPWebForm_equipo_5
             Response.Redirect("VentanaCarrito.aspx", false);
         }
 
+        protected void Btndetalle_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(((Button)sender).CommandArgument);
+            foreach (var item in listaLecturaArticulos)
+            {
+                if (id == item.Id)
+                {
+                    artseleccionado = item;
+                }
+
+            }
+            
+            Session.Add("ArticulosEnCarrito", artseleccionado);
+
+            Response.Redirect("VentanaDetalle.aspx", false);
+        }
         protected void DdlOrden_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada;
@@ -83,21 +99,6 @@ namespace TPWebForm_equipo_5
             listaLecturaArticulos = listaFiltrada;
             repRepetidor.DataSource = listaLecturaArticulos;
             repRepetidor.DataBind();
-        }
-        protected void Btndetalle_Click(object sender, EventArgs e)
-        {
-            int id = int.Parse(((Button)sender).CommandArgument);
-            foreach (var item in listaLecturaArticulos)
-            {
-                if (id == item.Id)
-                {
-                    artseleccionado = item;
-                }
-
-            }
-            Session.Add("ArticulosEnCarrito", artseleccionado);
-
-            Response.Redirect("VentanaDetalle.aspx", false);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace TPWebForm_equipo_5
 {
     public partial class VentanaDetalle : System.Web.UI.Page
     {
-        public List<Articulo> listaLecturaArticulos;
+        public List<Articulo> listacarrito;
         private List<Imagen> listaImagenes;
         private Articulo seleccionado = null;
         int indiceMaximo = 0;
@@ -22,12 +22,7 @@ namespace TPWebForm_equipo_5
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["ArticulosEnCarrito"] != null ) //Revisar como es enviado el id (de VentanaProductos)
-            {
-                //int id = 50; //Simulacion de id de articulo
-                             //int id = int.Parse(Request.QueryString["id"]);
-
-                //LecturaArticulo lecturaArticulo = new LecturaArticulo();
-                //listaLecturaArticulos = lecturaArticulo.listar();
+            {            
                 seleccionado = (Articulo)Session["ArticulosEnCarrito"];
 
                 lblNombreArticulo.Text = seleccionado.Nombre;
@@ -74,20 +69,10 @@ namespace TPWebForm_equipo_5
 
         public void cargarCarrito()
         {
-            Session["ArticulosEnCarrito"] = Session["DetalleArticulo"];
-
-            if (Session["ArticulosEnCarrito"] != null)
-            {
-                List<Articulo> ArticulosEnCarrito = (List<Articulo>)Session["ArticulosEnCarrito"];
-                ArticulosEnCarrito.Add(seleccionado);
-                Session["ArticulosEnCarrito"] = ArticulosEnCarrito;
-            }
-            else
-            {
-                List<Articulo> ArticulosEnCarrito = new List<Articulo>();
-                ArticulosEnCarrito.Add(seleccionado);
-                Session["ArticulosEnCarrito"] = ArticulosEnCarrito;
-            }
+            if (seleccionado!=null)
+            {                  
+                Session.Add("listaArticulosEnCarrito",seleccionado);
+            }            
         }
         private void cargarImagen(int Id)
         {
