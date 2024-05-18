@@ -69,15 +69,17 @@ namespace TPWebForm_equipo_5
             }
 
             listaLecturaArticulos = nuevaLista;
-            if(listaLecturaArticulos.Count < 0)
+            if(listaLecturaArticulos.Count == 0)
             {
-                Response.Redirect("VentanaCarrito.aspx");
+                Session["ArticulosEnCarrito"]=null;
+                Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
+                Response.Redirect("VentanaProductos.aspx");
             }
             else {
                 repCarrito.DataSource = listaLecturaArticulos;
                 repCarrito.DataBind();
+                Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
             }
-            Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
         }
         protected void btnContinuarComprando_Click(object sender, EventArgs e)
         {

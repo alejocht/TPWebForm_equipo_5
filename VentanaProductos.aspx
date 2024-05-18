@@ -23,7 +23,7 @@
                 <itemtemplate>
                     <div class="col d-flex justify-content-center">
                         <div class="card">
-                            <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="Responsive image">
+                            <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="Image description" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: #E7ECEF"><%#Eval("Nombre")%></h5>
                                 <asp:button text="Detalles" runat="server" CssClass="btn btn-dark" id="Btndetalle"  CommandArgument ='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="Btndetalle_Click" />

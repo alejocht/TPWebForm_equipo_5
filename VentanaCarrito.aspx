@@ -21,7 +21,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-4">
-                                    <img src="https://via.placeholder.com/200" ID="imgCarrito" class="img-fluid" alt="Responsive image">
+                                    <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="Image description" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
                                 </div>
                                 <div class="col">
                                     <div class="container">
