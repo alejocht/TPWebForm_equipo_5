@@ -12,19 +12,19 @@
                         <%if (listaImagenes.Count() > 1)
                           { %>
                             <div class="carousel-item active">
-                                <img src="<%= listaImagenes[0].ImagenUrl%>" class="d-block w-100" alt="Imagen">
+                                <img src="<%= listaImagenes[0].ImagenUrl%>" class="d-block w-100" alt="Imagen" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
                             </div>
                         <% foreach (var item in listaImagenes.Skip(1))
                            { %>
                             <div class="carousel-item">
-                                <img src="<%:item.ImagenUrl%>" class="d-block w-100" alt="...">
+                                <img src="<%:item.ImagenUrl%>" class="d-block w-100" alt="Imagen" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
                             </div>
                         <% }
                           }
                             else
                             { %>
                                 <div class="carousel-item active">
-                                    <img src="<%= listaImagenes[0].ImagenUrl%>" class="d-block w-100" alt="Imagen">
+                                    <img src="<%= listaImagenes[0].ImagenUrl%>" class="d-block w-100" alt="Imagen" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
                                 </div>
                         <%  }
                         %>
