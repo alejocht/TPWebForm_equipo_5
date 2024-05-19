@@ -30,8 +30,6 @@ namespace TPWebForm_equipo_5
                 cargarddl();
                 repRepetidor.DataSource = listaLecturaArticulos;
                 repRepetidor.DataBind();
-
-               
             }
             
         }
@@ -52,11 +50,11 @@ namespace TPWebForm_equipo_5
         {
             List<Articulo> listaFiltrada;
             
-            if (DdlOrden.SelectedValue == "Precio ↑")
+            if (DdlOrden.SelectedValue == "Precio Mayor")
             {
                 listaFiltrada = listaLecturaArticulos.OrderByDescending(x => x.Precio).ToList();
             }
-            else if (DdlOrden.SelectedValue == "Precio ↓")
+            else if (DdlOrden.SelectedValue == "Precio Menor")
             {
                 listaFiltrada = listaLecturaArticulos.OrderBy(x => x.Precio).ToList();
             }
@@ -85,9 +83,9 @@ namespace TPWebForm_equipo_5
         //Metodo para inyectar valor a la dbl
         public void cargarddl()
         {
-            DdlOrden.Items.Add("Precio ↑");
             DdlOrden.Items.Add("Orden alfabetico");
-            DdlOrden.Items.Add("Precio ↓");
+            DdlOrden.Items.Add("Precio Mayor");
+            DdlOrden.Items.Add("Precio Menor");
         }
 
         //Evento "Comprar Ahora"

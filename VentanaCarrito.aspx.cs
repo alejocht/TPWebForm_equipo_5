@@ -95,7 +95,7 @@ namespace TPWebForm_equipo_5
         }
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
-            Response.Redirect("VentanaCompra.aspx");
+            //Acá se deberia ejecutar la compra.
         }
         private decimal CalcularCarritoTotal(List<Articulo> articulos)
         {

@@ -35,9 +35,8 @@ namespace TPWebForm_equipo_5
                     lblNombreArticulo.Text = seleccionado.Nombre;
                     lblPrecio.Text = seleccionado.Precio.ToString("F2");
                     lblDescripcion.Text = seleccionado.Descripcion;
-                    lblCategoria.Text = "Categoría: " + seleccionado.Categoria.Descripcion.ToString();
-                    lblMarca.Text = "Marca: " + seleccionado.Marca.Descripcion.ToString();
-                    tbxCantidad.Text = 1.ToString();
+                    lblCategoria.Text = seleccionado.Categoria.Descripcion.ToString();
+                    lblMarca.Text = seleccionado.Marca.Descripcion.ToString();
 
                     LecturaImagen lecturaImagen = new LecturaImagen();
                     indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);

@@ -8,6 +8,7 @@
     <title><%:Page.Title %> Pagina Maestra</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/EstilosBackgroundColor.css" rel="stylesheet"/>
+    <link href="css/StyleWebPage.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -59,12 +60,12 @@
                     <div class="col-xs-12 col-md-6 col-lg-3">
                         <p class="h6">Medios de pago</p>
                         <div>
-
                             <img class="img-thumbnail" src="https://www.lensexpress.com.ar/wp-content/uploads/2023/10/formas-pago.png" alt="Medios de pago" />
                         </div>
                     </div>
                     <div class="col-s-12 col-md-6 col-lg-3">
-                        <p class="h6">Integrantes</p>
+                        <p class="h6">Integrantes del proyecto Web</p>
+                        <br />
                         <ul>
                             <li>Santiago Javier Escobar Mendoza</li>
                             <li>Mariano Stoessel</li>
@@ -73,6 +74,7 @@
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-3">
                         <p class="h6">Nuestras Redes</p>
+                        <br />
                         <ul class="list-unstyled list-inline">
                             <li class="list-inline-item">
                                 <a href="#">
@@ -103,12 +105,14 @@
                         </ul>
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-3">
-                        <p class="h6">Atención al cliente</p>
+                        <p class="h6">Programación III - Equipo docente:</p>
+                        <br />
                         <p>
-                            Si hiciste una compra en el sitio
+                            Maximiliano Sar Fernández
                             <br />
-                            estamos a tu disposicion.<br />
-                            Puede comunicarse al <a class="text-decoration-underline" href="#">1123234545</a>
+                            Regina Laurentino
+                            <br />
+                            Gonzalo Ligero
                         </p>
                     </div>
                 </div>
