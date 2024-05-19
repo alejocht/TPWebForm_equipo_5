@@ -12,36 +12,39 @@
 
     <%if (listaMostrable)
         {%>
-    <div class="dropdown text-end" style="margin-right: 10px">
-        <asp:DropDownList ID="DdlOrden" runat="server" OnSelectedIndexChanged="DdlOrden_SelectedIndexChanged" AutoPostBack="true"
-            aria-label="Default select example" CssClass="btn  dropdown-toggle "
-            style="background-color:white"> 
-        </asp:DropDownList>
-    </div>
+        <div <%if (listaLecturaArticulos.Count() <= 3)
+            { %> style="height: 700px" <%} %> >
+            <div class="dropdown text-end" style="margin-right: 10px">
+                <asp:DropDownList ID="DdlOrden" runat="server" OnSelectedIndexChanged="DdlOrden_SelectedIndexChanged" AutoPostBack="true"
+                    aria-label="Default select example" CssClass="btn  dropdown-toggle "
+                    style="background-color:white"> 
+                </asp:DropDownList>
+            </div>
 
-    <div class="container text-center">
-        <div class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center p-3">
-            <asp:Repeater runat="server" ID="repRepetidor">
-                <ItemTemplate>
-                    <div class="col d-flex justify-content-center">
-                        <div class="card" style="background-color: #274C77">
-                            <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="Image description" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'" style="background-color: whitesmoke; width:248px">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color: #E7ECEF"><%#Eval("Nombre")%></h5>
-                                <asp:Button Text="Detalles" runat="server" CssClass="btn btn-light" ID="Btndetalle" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="Btndetalle_Click" />
+            <div class="container text-center">
+                <div class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center p-3">
+                    <asp:Repeater runat="server" ID="repRepetidor">
+                        <ItemTemplate>
+                            <div class="col d-flex justify-content-center">
+                                <div class="card" style="background-color: #274C77">
+                                    <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="Image description" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'" style="background-color: whitesmoke; width:248px">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: #E7ECEF"><%#Eval("Nombre")%></h5>
+                                        <asp:Button Text="Detalles" runat="server" CssClass="btn btn-light" ID="Btndetalle" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="Btndetalle_Click" />
+                                    </div>
+                                    <div class="card-footer">
+                                        <asp:Button Text="Comprar ahora" CssClass="btn btn-primary" runat="server" ID="btnComprarAhora" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnComprarAhora_Click" />
+                                        <br />
+                                        <small style="color: white">Precio: $<%#Eval("Precio")%> </small>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <asp:Button Text="Comprar ahora" CssClass="btn btn-primary" runat="server" ID="btnComprarAhora" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnComprarAhora_Click" />
-                                <br />
-                                <small style="color: white">Precio: $<%#Eval("Precio")%> </small>
-                            </div>
-                        </div>
-                    </div>
-                </ItemTemplate>
+                        </ItemTemplate>
 
-            </asp:Repeater>
-        </div>
-    </div>
+                    </asp:Repeater>
+                </div>
+            </div>
+        </div>    
     <%}
         else
         {%>
