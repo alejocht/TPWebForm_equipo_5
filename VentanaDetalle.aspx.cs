@@ -13,13 +13,15 @@ namespace TPWebForm_equipo_5
 {
     public partial class VentanaDetalle : System.Web.UI.Page
     {
+        //Variables
         public List<Articulo> listacarrito;
         public List<Imagen> listaImagenes;
         private Articulo seleccionado = null;
         int indiceMaximo = 0;
         int indiceActual = 0;
         public bool masImagenes = false;
-
+        
+        //Pageload
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -57,7 +59,32 @@ namespace TPWebForm_equipo_5
             }
 
         }
+        //No se uso
+       /* public void cargarCarrito()
+        {
+            if (seleccionado != null)
+            {
+                Session.Add("ArticulosEnCarrito", seleccionado);
+            }
+        }*/
+       
+        //Metodo Cargar Img
+        private void cargarImagen(int Id)
+        {
+            try
+            {
+                LecturaImagen lecturaImagen = new LecturaImagen();
+                listaImagenes = lecturaImagen.listar(Id);
 
+                //imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;
+            }
+            catch (Exception)
+            {
+                //imgUrlArticulo.ImageUrl = "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
+            }
+        }
+
+        //Evento click "Comprar Ahora"
         protected void btnComprarAhora_Click(object sender, EventArgs e)
         {
             seleccionado = (Articulo)Session["ProductoEndetalle"];
@@ -66,7 +93,8 @@ namespace TPWebForm_equipo_5
 
             Response.Redirect("VentanaCarrito.aspx");
         }
-
+        
+        //Evento click "Agregar Carrito"
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
             seleccionado = (Articulo)Session["ProductoEndetalle"];
@@ -87,6 +115,8 @@ namespace TPWebForm_equipo_5
             //agregar ventana de confirmacion
         }
 
+        //Metodo para enviar una consulta via mail (Falta das funcionalidad)
+
         protected void btnEnviarConsulta_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text;
@@ -103,28 +133,7 @@ namespace TPWebForm_equipo_5
             }
         }
 
-        public void cargarCarrito()
-        {
-            if (seleccionado != null)
-            {
-                Session.Add("ArticulosEnCarrito", seleccionado);
-            }
-        }
-        private void cargarImagen(int Id)
-        {
-            try
-            {
-                LecturaImagen lecturaImagen = new LecturaImagen();
-                listaImagenes = lecturaImagen.listar(Id);
-
-                //imgUrlArticulo.ImageUrl = listaImagenes[indiceActual].ImagenUrl;
-            }
-            catch (Exception)
-            {
-                //imgUrlArticulo.ImageUrl = "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
-            }
-        }
-
+        //Metodo img click
         protected void BtnImagenes_Click(object sender, EventArgs e)
         {
             masImagenes = true;
