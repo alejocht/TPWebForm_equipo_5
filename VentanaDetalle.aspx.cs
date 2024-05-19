@@ -41,6 +41,15 @@ namespace TPWebForm_equipo_5
                     indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);
                     cargarImagen(seleccionado.Id);
                     Session.Add("ProductoEndetalle", seleccionado);
+                    if (Session["listaArticulosEnCarrito"] != null)
+                    {
+                        listacarrito = (List<Articulo>)Session["listaArticulosEnCarrito"];
+                    }
+                    else
+                    {
+                        listacarrito = new List<Articulo>();
+                        listacarrito.Add(seleccionado );
+                    }
 
                     Session["ArticulosEnCarrito"]=null;
 
@@ -60,8 +69,18 @@ namespace TPWebForm_equipo_5
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
+            seleccionado = (Articulo)Session["ProductoEndetalle"];
+            if (Session["listaArticulosEnCarrito"] != null)
+            {
+                listacarrito = (List<Articulo>)Session["listaArticulosEnCarrito"];
+            }
+            else
+            {
+                listacarrito = new List<Articulo>();
+            }
+            listacarrito.Add(seleccionado);           
 
-            Session.Add("listaArticulosEnCarrito", seleccionado);
+            Session.Add("listaArticulosEnCarrito", listacarrito);
 
             Response.Redirect("VentanaProductos.aspx");
 

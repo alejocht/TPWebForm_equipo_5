@@ -20,14 +20,15 @@ namespace TPWebForm_equipo_5
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            listaDeCompras = (List<Articulo>)Session["listaArticulosEnCarrito"];
-            if (listaDeCompras == null)
+            
+            
+            if (Session["listaArticulosEnCarrito"] == null)
             {
                 Contador.Text = "0";
             }
             else
             {
+                listaDeCompras = (List<Articulo>)Session["listaArticulosEnCarrito"];
                 int cantidad = listaDeCompras.Count();
                 Contador.Text = cantidad.ToString();
 
