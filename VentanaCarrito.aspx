@@ -4,17 +4,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container text-center" id="containerCarrito">
+    <div class="container text-center">
         <div class="container text-center">
             <h1>Carrito de Compras</h1>
         </div>
 
         <%  if (listaLecturaArticulos.Count() != 0)
             { %>
-        <div class="container text-center">
-            <h3>Lista de productos</h3>
-        </div>
-        <div class="container">
+        <div class="container" id="containerCarrito">
             <div class="row">
                 <asp:Repeater runat="server" ID="repCarrito">
                     <ItemTemplate>
@@ -62,34 +59,33 @@
                                 </div>
                             </div>
                         </div>
-                        <hr />
+                        <hr style="width: 90%; margin-inline: 10%;" />
                     </ItemTemplate>
                 </asp:Repeater>
-
-                <div class="text-start">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <h4>Resumen del pedido</h4>
-                                <div>
-                                    <asp:Label ID="lblSubTotal" runat="server" Text="Subtotal: xxxx" CssClass="p" />
-                                </div>
-                                <div>
-                                    <asp:Label ID="lblEnvio" runat="server" Text="Envio: xxxx" CssClass="p" />
-                                </div>
-                                <div>
-                                    <asp:Label ID="lblTotalCompra" runat="server" Text="Total: $xxxx" CssClass="h4" />
-                                </div>
-
+            </div>
+            <div class="text-start">
+                <div class="container" id="containerResumenCompra">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Resumen del pedido</h4>
+                            <div>
+                                <asp:Label ID="lblSubTotal" runat="server" Text="Subtotal: xxxx" CssClass="p" />
                             </div>
+                            <div>
+                                <asp:Label ID="lblEnvio" runat="server" Text="Envio: xxxx" CssClass="p" />
+                            </div>
+                            <div>
+                                <asp:Label ID="lblTotalCompra" runat="server" Text="Total: $xxxx" CssClass="h4" />
+                            </div>
+
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <asp:Button ID="btnComprar" runat="server" Text="Comprar" CssClass="btn btn-success w-75" OnClick="btnFinalizarCompra_Click" />
-                            </div>
-                            <div class="col">
-                                <asp:Button ID="btnContinuarComprando" runat="server" Text="Continuar comprando" CssClass="btn btn-primary w-75" OnClick="btnContinuarComprando_Click" />
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <asp:Button ID="btnComprar" runat="server" Text="Comprar" CssClass="btn btn-success w-75" OnClick="btnFinalizarCompra_Click" />
+                        </div>
+                        <div class="col">
+                            <asp:Button ID="btnContinuarComprando" runat="server" Text="Continuar comprando" CssClass="btn btn-primary w-75" OnClick="btnContinuarComprando_Click" />
                         </div>
                     </div>
                 </div>
@@ -98,9 +94,9 @@
         <%   }
             else
             { %>
-        <div class="container" style="min-height: 100vh;">
+        <div class="container" id="containerCarritoVacio">
             <div class="row">
-                <div class="col-9">
+                <div class="col">
                     <h3>Lista de productos</h3>
                     <p>No hay productos en el carrito de momento, no te quedes con las ganas!</p>
                     <div class="container">
@@ -116,9 +112,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <h4></h4>
                 </div>
             </div>
         </div>
