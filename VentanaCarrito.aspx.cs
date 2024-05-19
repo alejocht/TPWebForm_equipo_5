@@ -16,8 +16,6 @@ namespace TPWebForm_equipo_5
         public int indice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             if (!IsPostBack)
             {
                 if (listaLecturaArticulos == null)
@@ -95,7 +93,7 @@ namespace TPWebForm_equipo_5
         }
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
-            //Acá se deberia ejecutar la compra.
+            Response.Redirect("VentanaProductos.aspx");
         }
         private decimal CalcularCarritoTotal(List<Articulo> articulos)
         {

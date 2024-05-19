@@ -9,7 +9,7 @@
             <h1>Carrito de Compras</h1>
         </div>
 
-        <%  if (listaLecturaArticulos.Count() != 0)
+        <%  if (listaLecturaArticulos != null && listaLecturaArticulos.Count() != 0)
             { %>
         <div class="container" id="containerCarrito">
             <div class="row">
