@@ -10,8 +10,14 @@ namespace TPWebForm_equipo_5
 {
     public partial class MiMaster : System.Web.UI.MasterPage
     {
+        public int cantidad;
         string busqueda;
         List<Articulo> listaDeCompras;
+        public string cantidadItems
+        {
+            get { return cantidadItems; }
+            set { Contador.Text = value; }
+        }
 
         protected bool ValidarTextBox(string busqueda)
         {
@@ -29,7 +35,7 @@ namespace TPWebForm_equipo_5
             else
             {
                 listaDeCompras = (List<Articulo>)Session["listaArticulosEnCarrito"];
-                int cantidad = listaDeCompras.Count();
+                cantidad = listaDeCompras.Count();
                 Contador.Text = cantidad.ToString();
 
             }

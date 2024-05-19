@@ -84,6 +84,8 @@ namespace TPWebForm_equipo_5
                 repCarrito.DataSource = listaLecturaArticulos;
                 repCarrito.DataBind();
                 Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
+                MiMaster master = (MiMaster)Master;
+                master.cantidadItems = listaLecturaArticulos.Count().ToString();
             }
         }
         protected void btnContinuarComprando_Click(object sender, EventArgs e)
