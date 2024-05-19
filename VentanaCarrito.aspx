@@ -4,6 +4,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <div class="modal fade" id="btnAvisoCompra" tabindex="k-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Compra finalizada (sin funcionamiento)</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Proximanente se habilitara la opcion de compra...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container text-center">
         <div class="container text-center">
             <h1>Carrito de Compras</h1>
@@ -82,7 +100,9 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <asp:Button ID="btnComprar" runat="server" Text="Comprar" CssClass="btn btn-success w-75" OnClick="btnFinalizarCompra_Click" />
+                            <button type="button" class="btn btn-success w-75" data-bs-toggle="modal" data-bs-target="#btnAvisoCompra">
+                                Comprar
+                            </button>
                         </div>
                         <div class="col">
                             <asp:Button ID="btnContinuarComprando" runat="server" Text="Continuar comprando" CssClass="btn btn-primary w-75" OnClick="btnContinuarComprando_Click" />

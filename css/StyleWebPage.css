@@ -106,4 +106,13 @@ li {
     margin-bottom: 30px;
     background-color: #f1f1f1;
 }
+
+.modal-content div {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.modal-header {
+    background-color: #274C77;
+    color: white;
+    padding-inline: 0;
 }
