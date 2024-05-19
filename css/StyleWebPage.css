@@ -1,4 +1,4 @@
-﻿#ContainerPrincipal {
+﻿#containerPrincipal {
     display: flex;
     align-items: center;
     height: auto;
@@ -10,18 +10,22 @@
     height: auto;
     width: 90%;
 }
-.card-body{
+
+.card-body {
     text-align: center;
     align-items: center;
 }
+
 .card-footer {
     text-align: center;
     align-items: center;
 }
-.card-footer .btn {
-    margin: 10px;
-}
-#ContainerDetalle {
+
+    .card-footer .btn {
+        margin: 10px;
+    }
+
+#containerDetalle {
     display: flex;
     height: auto;
     padding: 20px;
@@ -59,10 +63,12 @@ div {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-li{
+
+li {
     margin-left: 5px;
     margin-right: 5px;
 }
+
 #containerCarrito {
     display: flex;
     height: auto;
@@ -70,4 +76,34 @@ li{
     margin-top: 30px;
     margin-bottom: 30px;
     background-color: #f1f1f1;
+}
+
+#containerResumenCompra {
+    color: white;
+    height: auto;
+    width: 300px;
+    padding: 20px;
+    background-color: #274C77;
+    text-align: center;
+}
+
+    #containerResumenCompra div.row {
+        text-align: center;
+        margin-left: 1px;
+        padding-bottom: 10px;
+    }
+
+    #containerResumenCompra div {
+        padding-top: 10px;
+    }
+
+#containerCarritoVacio {
+    display: flex;
+    height: auto;
+    width: 60%;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #f1f1f1;
+}
 }
