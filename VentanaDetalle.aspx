@@ -4,6 +4,23 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <div class="modal fade" id="btnAvisoCompra" tabindex="k-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Consulta enviada con exito</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Su consulta se enviará a nuestro equipo de ventas, quienes se pondrán en contacto con usted en el menor tiempo posible.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="containerDetalle">
         <div class="row">
             <div class="col-md-5">
@@ -104,7 +121,9 @@
                         <h5>Consulta</h5>
                         <asp:TextBox ID="txtConsulta" TextMode="MultiLine" runat="server" CssClass="form-control" placeholder="Escriba su consulta aquí" Rows="3" />
                         <div class="container text-end">
-                            <asp:Button ID="btnEnviarConsulta" runat="server" Text="Enviar consulta" CssClass="btn btn-primary" OnClick="btnEnviarConsulta_Click" />
+                            <button type="button" class="btn btn-success w-75" data-bs-toggle="modal" data-bs-target="#btnAvisoCompra">
+                                Enviar Consulta
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -114,7 +133,7 @@
     <div class="container" id="containerPoliticas">
         <div class="container text-center">
             <h5>Política de Devoluciones y Garantías</h5>
-            <p style="text-transform:uppercase">
+            <p style="text-transform: uppercase">
                 En el nombre de la tienda, nos comprometemos a ofrecer productos de alta calidad y a garantizar la satisfacción
                 de nuestros clientes. En caso de que no estés completamente satisfecho con tu compra, te ofrecemos una política de devoluciones
                 y garantías que te permite devolver o cambiar el producto de acuerdo a las condiciones establecidas en este documento.

@@ -131,22 +131,6 @@ namespace TPWebForm_equipo_5
 
         //Metodo para enviar una consulta via mail (Falta das funcionalidad)
 
-        protected void btnEnviarConsulta_Click(object sender, EventArgs e)
-        {
-            string nombre = txtNombre.Text;
-            string email = txtEmail.Text;
-            string consulta = txtConsulta.Text;
-
-            if (nombre != "" && email != "" && consulta != "")
-            {
-                //lblMensaje.Text = "Consulta enviada correctamente";
-            }
-            else
-            {
-                //lblMensaje.Text = "Por favor, complete todos los campos";
-            }
-        }
-
         //Metodo img click
         protected void BtnImagenes_Click(object sender, EventArgs e)
         {
