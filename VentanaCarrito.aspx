@@ -3,15 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container text-center">
+
+    <div class="container text-center" id="containerCarrito">
         <div class="container text-center">
-            <h2>Carrito de Compras</h2>
+            <h1>Carrito de Compras</h1>
         </div>
 
-        <%  if (listaLecturaArticulos != null)
+        <%  if (listaLecturaArticulos.Count() != 0)
             { %>
         <div class="container text-center">
-            <h1>Lista de productos</h1>
+            <h3>Lista de productos</h3>
         </div>
         <div class="container">
             <div class="row">
@@ -65,8 +66,6 @@
                     </ItemTemplate>
                 </asp:Repeater>
 
-
-
                 <div class="text-start">
                     <div class="container">
                         <div class="row">
@@ -102,7 +101,7 @@
         <div class="container" style="min-height: 100vh;">
             <div class="row">
                 <div class="col-9">
-                    <h4>Lista de productos</h4>
+                    <h3>Lista de productos</h3>
                     <p>No hay productos en el carrito de momento, no te quedes con las ganas!</p>
                     <div class="container">
                         <div class="row">
@@ -119,7 +118,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <h4>Resumen del pedido</h4>
+                    <h4></h4>
                 </div>
             </div>
         </div>
