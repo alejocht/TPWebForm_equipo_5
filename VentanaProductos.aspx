@@ -12,9 +12,10 @@
 
     <%if (listaMostrable)
         {%>
-    <div class="container d-flex justify-content-end" style="margin-right: 10px">
+    <div class="dropdown text-end" style="margin-right: 10px">
         <asp:DropDownList ID="DdlOrden" runat="server" OnSelectedIndexChanged="DdlOrden_SelectedIndexChanged" AutoPostBack="true"
-            aria-label="Default select example">
+            aria-label="Default select example" CssClass="btn  dropdown-toggle "
+            style="background-color:white"> 
         </asp:DropDownList>
     </div>
 

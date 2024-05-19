@@ -40,6 +40,7 @@ namespace TPWebForm_equipo_5
 
                     Session["ArticulosEnCarrito"] = null;
                 }
+                    
                     repCarrito.DataSource = listaLecturaArticulos;
                     repCarrito.DataBind();
 
