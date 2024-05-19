@@ -9,36 +9,39 @@
             <div class="col-md-5">
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
-                        <%if (listaImagenes.Count() > 1)
-                          { %>
-                            <div class="carousel-item active">
-                                <img src="<%= listaImagenes[0].ImagenUrl%>" class="d-block w-100" alt="Imagen" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
-                            </div>
-                        <% foreach (var item in listaImagenes.Skip(1))
-                           { %>
-                            <div class="carousel-item">
-                                <img src="<%:item.ImagenUrl%>" class="d-block w-100" alt="Imagen" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
-                            </div>
-                        <% }
-                          }
-                            else
-                            { %>
+                    <%if (listaImagenes != null)
+                        {%>
+                            <%if (listaImagenes.Count() > 1)
+                                { %>
                                 <div class="carousel-item active">
                                     <img src="<%= listaImagenes[0].ImagenUrl%>" class="d-block w-100" alt="Imagen" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
                                 </div>
-                        <%  }
-                        %>
-                    </div>
-                    <%if (listaImagenes.Count() > 1)
-                      {%>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                            <% foreach (var item in listaImagenes.Skip(1))
+                                { %>
+                                <div class="carousel-item">
+                                    <img src="<%:item.ImagenUrl%>" class="d-block w-100" alt="Imagen" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
+                                </div>
+                            <% }
+                                }
+                                else
+                                { %>
+                                    <div class="carousel-item active">
+                                        <img src="<%= listaImagenes[0].ImagenUrl%>" class="d-block w-100" alt="Imagen" onerror="this.src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'">
+                                    </div>
+                            <%  }
+                            %>
+                        </div>
+                        <%if (listaImagenes.Count() > 1)
+                            {%>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        <%} %>
                     <%} %>
                 </div>
             </div>
