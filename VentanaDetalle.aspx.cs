@@ -51,9 +51,24 @@ namespace TPWebForm_equipo_5
                         listacarrito = new List<Articulo>();
                         listacarrito.Add(seleccionado );
                     }
+                    
 
                     Session["ArticulosEnCarrito"]=null;
 
+                }
+                else
+                {
+                    seleccionado = (Articulo)Session["ProductoEndetalle"];
+                    lblNombreArticulo.Text = seleccionado.Nombre;
+                    lblPrecio.Text = seleccionado.Precio.ToString("F2");
+                    lblDescripcion.Text = seleccionado.Descripcion;
+                    lblCategoria.Text = seleccionado.Categoria.Descripcion.ToString();
+                    lblMarca.Text = seleccionado.Marca.Descripcion.ToString();
+
+                    LecturaImagen lecturaImagen = new LecturaImagen();
+                    indiceMaximo = lecturaImagen.maximoImagen(seleccionado.Id);
+                    cargarImagen(seleccionado.Id);
+                    Session.Add("ProductoEndetalle", seleccionado);
                 }
             }
 
