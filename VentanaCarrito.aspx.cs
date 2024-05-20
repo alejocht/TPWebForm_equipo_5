@@ -75,7 +75,7 @@ namespace TPWebForm_equipo_5
             {
                 Session["ArticulosEnCarrito"] = null;
                 Session.Add("listaArticulosEnCarrito", listaLecturaArticulos);
-                Response.Redirect("VentanaProductos.aspx");
+                Response.Redirect("default.aspx");
             }
             else
             {
@@ -89,11 +89,11 @@ namespace TPWebForm_equipo_5
         protected void btnContinuarComprando_Click(object sender, EventArgs e)
         {
             Session["ArticulosEnCarrito"] = null;
-            Response.Redirect("VentanaProductos.aspx");
+            Response.Redirect("default.aspx");
         }
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
-            Response.Redirect("VentanaProductos.aspx");
+            Response.Redirect("default.aspx");
         }
         private decimal CalcularCarritoTotal(List<Articulo> articulos)
         {

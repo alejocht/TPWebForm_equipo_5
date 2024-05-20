@@ -47,12 +47,12 @@ namespace TPWebForm_equipo_5
             if (ValidarTextBox(busqueda))
             {
                 //caso en el que tiene que iniciar la busqueda
-                Response.Redirect("VentanaProductos.aspx?busqueda=" + busqueda, false);
+                Response.Redirect("default.aspx?busqueda=" + busqueda, false);
             }
             else
             {
                 //caso en el que tiene que mostrar todo
-                Response.Redirect("VentanaProductos.aspx", false);
+                Response.Redirect("default.aspx", false);
             }
         }
     }

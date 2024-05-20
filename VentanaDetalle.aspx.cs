@@ -124,7 +124,7 @@ namespace TPWebForm_equipo_5
 
             Session.Add("listaArticulosEnCarrito", listacarrito);
 
-            Response.Redirect("VentanaProductos.aspx");
+            Response.Redirect("default.aspx");
 
             //agregar ventana de confirmacion
         }

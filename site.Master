@@ -1,11 +1,12 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MiMaster.master.cs" Inherits="TPWebForm_equipo_5.MiMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="site.Master.cs" Inherits="TPWebForm_equipo_5.MiMaster" %>
 
 <!DOCTYPE html>
 
 <html lang="es">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><%:Page.Title %> Pagina Maestra</title>
+    <title><%:Page.Title %> CarritoWeb</title>
+    <link href="img\IconoWeb.png" rel="icon" type="image/png"/>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/EstilosBackgroundColor.css" rel="stylesheet"/>
     <link href="css/StyleWebPage.css" rel="stylesheet" />
@@ -21,7 +22,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #274C77">
                 <div class="container-fluid">
-                    <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="VentanaProductos.aspx">
+                    <a class="nav-link active  d-inline-flex p-2" aria-current="page" href="default.aspx">
                         <h3 style="color: white; width: 20%;">CarritoWeb</h3>
                     </a>
                     <div class="d-inline-flex p-2 w-50 justify-content-center" id="navbarSupportedContent">
@@ -32,7 +33,7 @@
                     <div>
                         <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0" style="color: white; width: 20%;">
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="VentanaProductos.aspx">Inicio</a>
+                                <a class="nav-link " aria-current="page" href="default.aspx">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " aria-current="page" href="#about">About</a>
@@ -60,13 +61,13 @@
                     <div class="col-xs-12 col-md-6 col-lg-3">
                         <p class="h6">Medios de pago</p>
                         <div>
-                            <img class="img-thumbnail" src="https://www.lensexpress.com.ar/wp-content/uploads/2023/10/formas-pago.png" alt="Medios de pago" />
+                            <img class="img-thumbnail" src="img\formas-pago.png" alt="Medios de pago" />
                         </div>
                     </div>
                     <div class="col-s-12 col-md-6 col-lg-3">
                         <p class="h6">Integrantes del proyecto Web</p>
                         <br />
-                        <ul>
+                        <ul class="list-unstyled">
                             <li>Santiago Javier Escobar Mendoza</li>
                             <li>Mariano Stoessel</li>
                             <li>Alejo Chavez Tolosa</li>
@@ -78,42 +79,40 @@
                         <ul class="list-unstyled list-inline">
                             <li class="list-inline-item">
                                 <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://cdn-icons-png.flaticon.com/256/124/124010.png" alt="Facebook" /></a>
+                                    <img style="width: 32px; height: 32px" src="img\icons8-facebook-50.png" alt="Facebook" /></a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png" alt="Instagram" /></a>
+                                    <img style="width: 32px; height: 32px" src="img\icons8-instagram-50.png" alt="Instagram" /></a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png" alt="Twitter" /></a>
+                                    <img style="width: 32px; height: 32px" src="img/icons8-twitter-50.png"" alt="Twitter" /></a>
                             </li>
                         </ul>
                         <ul class="list-unstyled list-inline">
                             <li class="list-inline-item">
                                 <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://fontmeme.com/images/tiktok-logo-font.png" alt="TikTok" /></a>
+                                    <img style="width: 32px; height: 32px" src="img\icons8-tik-tok-50.png" alt="TikTok" /></a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="Youtube" /></a>
+                                    <img style="width: 32px; height: 32px" src="img\icons8-youtube-50.png" alt="Youtube" /></a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="#">
-                                    <img style="width: 32px; height: 32px" src="https://cdn-icons-png.flaticon.com/256/174/174857.png" alt="Linkedin" /></a>
+                                    <img style="width: 32px; height: 32px" src="img\icons8-linkedin-50.png" alt="Linkedin" /></a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-3">
                         <p class="h6">Programación III - Equipo docente:</p>
                         <br />
-                        <p>
-                            Maximiliano Sar Fernández
-                            <br />
-                            Regina Laurentino
-                            <br />
-                            Gonzalo Ligero
-                        </p>
+                           <ul class="list-unstyled">
+                                <li>Maximiliano Sar Fernández</li>
+                                <li>Regina Laurentino</li>
+                                <li>Gonzalo Ligero</li>
+                            </ul>
                     </div>
                 </div>
             </div>
